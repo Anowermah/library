@@ -77,3 +77,4 @@ export async function GET() {
     status: diagnostics.database.status === 'connected' ? 200 : 500,
   });
 }
+

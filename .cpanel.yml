@@ -1,0 +1,13 @@
+---
+deployment:
+  tasks:
+    # 1. Define destination application directory
+    - export DEPLOYPATH=/home/anowerit/shubbanlibrary.atrbd.com
+    # 2. Copy source files to application directory
+    - /bin/cp -R * $DEPLOYPATH/
+    - /bin/cp -R .next $DEPLOYPATH/ 2>/dev/null || true
+    - /bin/cp .htaccess $DEPLOYPATH/ 2>/dev/null || true
+    - /bin/cp server.js $DEPLOYPATH/ 2>/dev/null || true
+    # 3. Create restart trigger for Passenger/CloudLinux
+    - /bin/mkdir -p $DEPLOYPATH/tmp
+    - /bin/touch $DEPLOYPATH/tmp/restart.txt
