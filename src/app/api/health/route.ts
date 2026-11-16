@@ -8,6 +8,8 @@ export async function GET() {
   let dbStatus = 'UNKNOWN';
   let dbLatencyMs = -1;
 
+  let dbErrorMessage = '';
+
   try {
     const dbStart = Date.now();
     await prisma.$queryRaw`SELECT 1`;
@@ -15,6 +17,7 @@ export async function GET() {
     dbStatus = 'CONNECTED';
   } catch (error: any) {
     dbStatus = 'ERROR';
+    dbErrorMessage = error?.message || 'Database connection failed';
     console.error('Health check database error:', error.message);
   }
 
@@ -34,6 +37,7 @@ export async function GET() {
         database: {
           status: dbStatus,
           latency: `${dbLatencyMs}ms`,
+          ...(dbErrorMessage ? { error: dbErrorMessage } : {}),
         },
         memory: {
           rss: `${Math.round(memoryUsage.rss / 1024 / 1024)} MB`,

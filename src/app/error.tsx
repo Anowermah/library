@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { AlertTriangle, RotateCcw, Home } from 'lucide-react';
+import { AlertTriangle, RotateCcw, Home, ChevronDown, ChevronUp, Terminal } from 'lucide-react';
 
 export default function ErrorBoundary({
   error,
@@ -11,6 +11,9 @@ export default function ErrorBoundary({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const [showDetails, setShowDetails] = useState(false);
+  const [isResetting, setIsResetting] = useState(false);
+
   useEffect(() => {
     console.error('App Error Boundary caught:', error);
 
@@ -24,42 +27,53 @@ export default function ErrorBoundary({
       error?.message?.includes('initial UI does not match');
 
     if (isCacheOrHydrationErr && typeof window !== 'undefined') {
-      if ('caches' in window) {
-        caches.keys().then((keys) => {
-          keys.forEach((key) => caches.delete(key));
-        });
-      }
-      if ('serviceWorker' in navigator && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
-        navigator.serviceWorker.getRegistrations().then((regs) => {
-          regs.forEach((reg) => reg.unregister());
-        });
+      try {
+        if ('caches' in window) {
+          caches.keys().then((keys) => {
+            keys.forEach((key) => caches.delete(key));
+          });
+        }
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then((regs) => {
+            regs.forEach((reg) => reg.unregister());
+          });
+        }
+      } catch (e) {
+        // ignore
       }
     }
   }, [error]);
 
   const handleReset = async () => {
+    setIsResetting(true);
     try {
       if (typeof reset === 'function') {
         reset();
       }
-      if (typeof window !== 'undefined' && 'caches' in window) {
-        const keys = await caches.keys();
-        await Promise.all(keys.map((k) => caches.delete(k)));
-      }
-      if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
-        const regs = await navigator.serviceWorker.getRegistrations();
-        for (const reg of regs) {
-          if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      // Aggressive cache & service worker purge to guarantee clean reload
+      if (typeof window !== 'undefined') {
+        if ('caches' in window) {
+          const keys = await caches.keys();
+          await Promise.all(keys.map((k) => caches.delete(k)));
+        }
+        if ('serviceWorker' in navigator) {
+          const regs = await navigator.serviceWorker.getRegistrations();
+          for (const reg of regs) {
             await reg.unregister();
-          } else {
-            await reg.update();
           }
         }
+        try {
+          sessionStorage.clear();
+        } catch (e) {}
       }
     } catch (e) {
       // ignore
     }
-    window.location.reload();
+
+    // Force hard reload with timestamp to bypass intermediate browser/proxy cache
+    if (typeof window !== 'undefined') {
+      window.location.href = window.location.pathname + '?reload=' + Date.now();
+    }
   };
 
   return (
@@ -81,10 +95,11 @@ export default function ErrorBoundary({
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
           <button
             onClick={handleReset}
-            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-shubban-green hover:bg-shubban-green-700 text-shubban-ivory font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
+            disabled={isResetting}
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-shubban-green hover:bg-shubban-green-700 text-shubban-ivory font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer disabled:opacity-50"
           >
-            <RotateCcw className="w-4 h-4" />
-            <span>পুনরায় লোড করুন</span>
+            <RotateCcw className={`w-4 h-4 ${isResetting ? 'animate-spin' : ''}`} />
+            <span>{isResetting ? 'ক্যাশ পরিষ্কার হচ্ছে...' : 'পুনরায় লোড করুন'}</span>
           </button>
 
           <Link
@@ -94,6 +109,28 @@ export default function ErrorBoundary({
             <Home className="w-4 h-4" />
             <span>হোমপেজে ফিরুন</span>
           </Link>
+        </div>
+
+        {/* Technical Error Details Accordion */}
+        <div className="pt-2">
+          <button
+            onClick={() => setShowDetails(!showDetails)}
+            className="text-[11px] text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 flex items-center justify-center gap-1 mx-auto transition-colors"
+          >
+            <Terminal className="w-3 h-3" />
+            <span>কারিগরি ত্রুটির বিবরণ {showDetails ? 'লুকান' : 'দেখুন'}</span>
+            {showDetails ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+          </button>
+
+          {showDetails && (
+            <div className="mt-3 p-3 bg-stone-50 dark:bg-stone-900/80 rounded-xl text-left border border-stone-200 dark:border-stone-800 text-[11px] font-mono text-rose-600 dark:text-rose-400 overflow-x-auto max-h-36">
+              <p className="font-bold text-stone-700 dark:text-stone-300 mb-1">Error Message:</p>
+              <p className="break-all">{error?.message || 'Uncaught Application Exception'}</p>
+              {error?.digest && (
+                <p className="text-[10px] text-stone-400 mt-1">Digest ID: {error.digest}</p>
+              )}
+            </div>
+          )}
         </div>
 
         <div className="pt-4 border-t border-stone-100 dark:border-stone-800 text-[11px] text-stone-400 flex items-center justify-between px-2">
@@ -106,4 +143,3 @@ export default function ErrorBoundary({
     </div>
   );
 }
-
