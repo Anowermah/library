@@ -35,7 +35,7 @@ export default function StorefrontLayout({
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden w-full relative">
       <Header />
-      <main className="flex-1 pb-20 md:pb-0 overflow-x-hidden w-full">{children}</main>
+      <main className="flex-1 pb-24 md:pb-0 overflow-x-hidden w-full">{children}</main>
       <Footer />
       <MobileBottomNav />
       <FloatingIslamicAiWidget />

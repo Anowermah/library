@@ -9,132 +9,140 @@ import {
   Newspaper,
   GraduationCap,
   HeartHandshake,
-  Layers,
   ArrowRight,
+  Flame,
+  Bot,
 } from 'lucide-react';
 
-interface CategoryItem {
+interface QuickServiceItem {
   id: string;
   name: string;
-  slug: string;
   href: string;
   icon: React.ReactNode;
-  bgLight: string;
-  countText: string;
+  iconBg: string;
+  badge?: string;
+  badgeColor?: string;
 }
 
-const CATEGORIES: CategoryItem[] = [
+const QUICK_SERVICES: QuickServiceItem[] = [
   {
-    id: '1',
-    name: 'সাহিত্য ও গল্প',
-    slug: 'literature',
-    href: '/books?category=literature',
-    icon: <BookOpen className="w-6 h-6 text-emerald-700 dark:text-emerald-300" />,
-    bgLight: 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-100 dark:border-emerald-800/40',
-    countText: 'চিরায়ত ও সমকালীন',
+    id: 'books',
+    name: 'সব বই',
+    href: '/books',
+    icon: <BookOpen className="w-5 h-5 text-emerald-700 dark:text-emerald-300" />,
+    iconBg: 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-200/60 dark:border-emerald-800/50',
+    badge: '১৪৩+',
   },
   {
-    id: '2',
-    name: 'ইসলামিক বই ও তাফসীর',
-    slug: 'islamic',
-    href: '/books?category=islamic',
-    icon: <Compass className="w-6 h-6 text-teal-700 dark:text-teal-300" />,
-    bgLight: 'bg-teal-50 dark:bg-teal-950/40 border-teal-100 dark:border-teal-800/40',
-    countText: 'কুরআন, হাদিস ও ফিকহ',
+    id: 'islamic-ai',
+    name: 'ইসলামিক এআই',
+    href: '/islamic-ai',
+    icon: <Bot className="w-5 h-5 text-teal-700 dark:text-teal-300" />,
+    iconBg: 'bg-teal-50 dark:bg-teal-950/60 border-teal-200/60 dark:border-teal-800/50',
+    badge: 'নতুন',
+    badgeColor: 'bg-amber-500 text-stone-950',
   },
   {
-    id: '3',
-    name: 'আতর ও লাইফস্টাইল',
-    slug: 'islamic-lifestyle',
+    id: 'free-pdf',
+    name: 'ফ্রি ই-বুক',
+    href: '/digital-library?free=true',
+    icon: <GraduationCap className="w-5 h-5 text-blue-700 dark:text-blue-300" />,
+    iconBg: 'bg-blue-50 dark:bg-blue-950/60 border-blue-200/60 dark:border-blue-800/50',
+    badge: 'মুক্ত',
+    badgeColor: 'bg-blue-600 text-white',
+  },
+  {
+    id: 'lifestyle',
+    name: 'আতর ও সুন্নাহ',
     href: '/books?category=islamic-lifestyle',
-    icon: <Sparkles className="w-6 h-6 text-amber-600 dark:text-amber-400" />,
-    bgLight: 'bg-amber-50 dark:bg-amber-950/40 border-amber-100 dark:border-amber-800/40',
-    countText: 'খাঁটি আতর ও জায়নামাজ',
+    icon: <Sparkles className="w-5 h-5 text-amber-600 dark:text-amber-400" />,
+    iconBg: 'bg-amber-50 dark:bg-amber-950/60 border-amber-200/60 dark:border-amber-800/50',
   },
   {
-    id: '4',
-    name: 'উপন্যাস ও ফিকশন',
-    slug: 'novel',
-    href: '/books?category=novel',
-    icon: <Feather className="w-6 h-6 text-blue-700 dark:text-blue-300" />,
-    bgLight: 'bg-blue-50 dark:bg-blue-950/40 border-blue-100 dark:border-blue-800/40',
-    countText: 'জনপ্রিয় ক্লাসিক উপন্যাস',
-  },
-  {
-    id: '5',
-    name: 'ইতিহাস ও ঐতিহ্য',
-    slug: 'history',
-    href: '/books?category=history',
-    icon: <Landmark className="w-6 h-6 text-purple-700 dark:text-purple-300" />,
-    bgLight: 'bg-purple-50 dark:bg-purple-950/40 border-purple-100 dark:border-purple-800/40',
-    countText: 'বাংলার ইতিহাস ও বিশ্ব ঐতিহ্য',
-  },
-  {
-    id: '6',
-    name: 'সাময়িকী ও জার্নাল',
-    slug: 'magazines',
+    id: 'magazines',
+    name: 'সাময়িকী',
     href: '/magazines',
-    icon: <Newspaper className="w-6 h-6 text-orange-700 dark:text-orange-300" />,
-    bgLight: 'bg-orange-50 dark:bg-orange-950/40 border-orange-100 dark:border-orange-800/40',
-    countText: 'মাসিক ও সাপ্তাহিক সংখ্যা',
+    icon: <Newspaper className="w-5 h-5 text-orange-700 dark:text-orange-300" />,
+    iconBg: 'bg-orange-50 dark:bg-orange-950/60 border-orange-200/60 dark:border-orange-800/50',
   },
   {
-    id: '7',
-    name: 'ডিজিটাল লাইব্রেরী (PDF)',
-    slug: 'digital-library',
-    href: '/digital-library',
-    icon: <GraduationCap className="w-6 h-6 text-rose-700 dark:text-rose-300" />,
-    bgLight: 'bg-rose-50 dark:bg-rose-950/40 border-rose-100 dark:border-rose-800/40',
-    countText: 'সরাসরি ইন-ব্রাউজার রিডার',
-  },
-  {
-    id: '8',
-    name: 'আস-সুন্নাহ সদকাহ ফান্ড',
-    slug: 'donations',
+    id: 'donations',
+    name: 'সদকাহ ফান্ড',
     href: '/donations',
-    icon: <HeartHandshake className="w-6 h-6 text-green-700 dark:text-green-300" />,
-    bgLight: 'bg-green-50 dark:bg-green-950/40 border-green-100 dark:border-green-800/40',
-    countText: '১০০% আমানতদারিতা ও রসিদ',
+    icon: <HeartHandshake className="w-5 h-5 text-rose-700 dark:text-rose-300" />,
+    iconBg: 'bg-rose-50 dark:bg-rose-950/60 border-rose-200/60 dark:border-rose-800/50',
+    badge: 'সদকাহ',
+    badgeColor: 'bg-rose-600 text-white',
+  },
+  {
+    id: 'history',
+    name: 'ইতিহাস ও ফিকহ',
+    href: '/books?category=history',
+    icon: <Landmark className="w-5 h-5 text-purple-700 dark:text-purple-300" />,
+    iconBg: 'bg-purple-50 dark:bg-purple-950/60 border-purple-200/60 dark:border-purple-800/50',
+  },
+  {
+    id: 'deals',
+    name: 'বিশেষ অফার',
+    href: '/books?filter=discount',
+    icon: <Flame className="w-5 h-5 text-red-600 dark:text-red-400" />,
+    iconBg: 'bg-red-50 dark:bg-red-950/60 border-red-200/60 dark:border-red-800/50',
+    badge: '৩০%',
+    badgeColor: 'bg-red-600 text-white',
   },
 ];
 
 export default function CategoryIconGrid() {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-bengali">
-      <div className="flex items-end justify-between mb-6 pb-3 border-b border-stone-200/80 dark:border-stone-800">
-        <div>
-          <div className="flex items-center gap-2 text-shubban-gold font-semibold text-xs tracking-wider uppercase mb-1">
-            <Layers className="w-4 h-4" />
-            <span>বিষয়ভিত্তিক ক্যাটালগ</span>
-          </div>
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 dark:text-stone-100">
-            জনপ্রিয় ক্যাটাগরি ও বিভাগসমূহ
+    <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 font-bengali">
+      {/* Mobile App Section Header (Compact bKash / MyGP style) */}
+      <div className="flex items-center justify-between mb-3 px-1">
+        <div className="flex items-center gap-1.5">
+          <span className="w-1.5 h-4 rounded-full bg-shubban-gold inline-block" />
+          <h2 className="font-bold text-sm sm:text-lg text-stone-900 dark:text-stone-100 tracking-tight">
+            জরুরি সেবা ও বিভাগসমূহ
           </h2>
         </div>
         <Link
-          href="/books"
-          className="text-xs sm:text-sm font-semibold text-shubban-green dark:text-shubban-gold hover:underline flex items-center gap-1"
+          href="/categories"
+          className="text-[11px] sm:text-xs font-bold text-shubban-green dark:text-shubban-gold hover:underline flex items-center gap-0.5"
         >
-          <span>সকল ক্যাটাগরি</span>
-          <ArrowRight className="w-4 h-4" />
+          <span>সব বিভাগ</span>
+          <ArrowRight className="w-3 h-3" />
         </Link>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 sm:gap-4">
-        {CATEGORIES.map((cat) => (
+      {/* 4-Column Grid on Mobile (bKash / MyGP / Nagad exact layout) */}
+      <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3 bg-white/70 dark:bg-stone-900/60 backdrop-blur-md p-2.5 sm:p-4 rounded-2xl sm:rounded-3xl border border-stone-200/70 dark:border-stone-800 shadow-sm">
+        {QUICK_SERVICES.map((item) => (
           <Link
-            key={cat.id}
-            href={cat.href}
-            className={`group p-2.5 sm:p-4 rounded-xl sm:rounded-2xl border text-center flex flex-col items-center justify-center transition-all duration-300 hover:shadow-md hover:-translate-y-1 ${cat.bgLight}`}
+            key={item.id}
+            href={item.href}
+            className="group flex flex-col items-center text-center p-1.5 rounded-xl transition-all active:scale-90"
           >
-            <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-white dark:bg-stone-800 shadow-sm border border-stone-200/50 dark:border-stone-700 group-hover:scale-110 transition-transform mb-2">
-              {cat.icon}
+            <div className="relative">
+              {/* App Icon Squircle */}
+              <div
+                className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border flex items-center justify-center shadow-xs group-hover:shadow-md group-hover:scale-105 transition-all ${item.iconBg}`}
+              >
+                {item.icon}
+              </div>
+
+              {/* Optional Micro Badge */}
+              {item.badge && (
+                <span
+                  className={`absolute -top-1 -right-1 px-1 py-0.2 rounded-full text-[8px] sm:text-[9px] font-bold shadow-xs ${
+                    item.badgeColor || 'bg-shubban-gold text-stone-950'
+                  }`}
+                >
+                  {item.badge}
+                </span>
+              )}
             </div>
-            <h3 className="font-bold text-[11px] sm:text-sm text-stone-900 dark:text-stone-100 group-hover:text-shubban-gold transition-colors line-clamp-1">
-              {cat.name}
-            </h3>
-            <span className="text-[9px] sm:text-[10px] text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-1">
-              {cat.countText}
+
+            {/* Label */}
+            <span className="mt-1.5 text-[10.5px] sm:text-xs font-semibold text-stone-800 dark:text-stone-200 group-hover:text-shubban-gold transition-colors line-clamp-1 tracking-tight">
+              {item.name}
             </span>
           </Link>
         ))}
@@ -142,4 +150,3 @@ export default function CategoryIconGrid() {
     </section>
   );
 }
-

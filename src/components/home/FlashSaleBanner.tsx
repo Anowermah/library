@@ -29,8 +29,8 @@ export default function FlashSaleBanner() {
   }, []);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-bengali">
-      <div className="rounded-2xl bg-gradient-to-r from-amber-600 via-rose-600 to-amber-700 text-white p-4 sm:p-6 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
+    <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 font-bengali">
+      <div className="rounded-2xl bg-gradient-to-r from-amber-600 via-rose-600 to-amber-700 text-white p-3 sm:p-6 shadow-md flex flex-col md:flex-row items-center justify-between gap-2.5 sm:gap-4">
         {/* Left Headline */}
         <div className="flex items-center gap-3 text-center sm:text-left">
           <div className="p-3 rounded-xl bg-white/20 backdrop-blur-md hidden sm:block">

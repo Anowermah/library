@@ -1308,7 +1308,7 @@ export default async function HomePage() {
   };
 
   return (
-    <div className="space-y-12 sm:space-y-16 pb-16 font-bengali">
+    <div className="space-y-5 sm:space-y-12 pb-8 sm:pb-16 font-bengali">
       {/* Top Header Announcement Ad Slot */}
       <AdSlot placementKey="header_announcement" />
 

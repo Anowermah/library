@@ -344,40 +344,43 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Main Header Bar */}
+        {/* Main Header Bar — Ultra Clean Mobile App-Bar (bKash / MyGP Style) */}
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
+          <div className="flex items-center justify-between h-14 sm:h-20 gap-2 sm:gap-4">
             {/* Logo & Mobile Menu Trigger */}
             <div className="flex items-center gap-2 sm:gap-3 min-w-0">
               {/* Animated Hamburger Button */}
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-                className="lg:hidden relative w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl flex flex-col items-center justify-center gap-1.5 text-stone-900 dark:text-stone-100 bg-stone-100 hover:bg-stone-200/90 dark:bg-stone-800/90 dark:hover:bg-stone-700/90 border border-stone-200/90 dark:border-stone-700/80 hover:border-shubban-gold/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-shubban-gold transition-all active:scale-95 flex-shrink-0 shadow-xs"
+                className="lg:hidden relative w-9 h-9 rounded-xl flex flex-col items-center justify-center gap-1.5 text-stone-900 dark:text-stone-100 bg-stone-100 hover:bg-stone-200/90 dark:bg-stone-800/90 dark:hover:bg-stone-700/90 border border-stone-200/90 dark:border-stone-700/80 hover:border-shubban-gold/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-shubban-gold transition-all active:scale-90 flex-shrink-0 shadow-xs"
                 aria-label={isMobileMenuOpen ? 'মেনু বন্ধ করুন' : 'প্রধান মেনু খুলুন'}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-navigation-drawer"
               >
                 <span
-                  className={`block h-[2.5px] w-5 sm:w-6.5 rounded-full transition-all duration-300 ease-in-out ${isMobileMenuOpen
-                      ? 'rotate-45 translate-y-[8px] bg-shubban-gold'
+                  className={`block h-[2px] w-4.5 rounded-full transition-all duration-300 ease-in-out ${
+                    isMobileMenuOpen
+                      ? 'rotate-45 translate-y-[6px] bg-shubban-gold'
                       : 'bg-stone-900 dark:bg-stone-100'
-                    }`}
+                  }`}
                 />
                 <span
-                  className={`block h-[2.5px] w-5 sm:w-6.5 rounded-full transition-all duration-200 ease-in-out ${isMobileMenuOpen
+                  className={`block h-[2px] w-4.5 rounded-full transition-all duration-200 ease-in-out ${
+                    isMobileMenuOpen
                       ? 'opacity-0 scale-x-0'
                       : 'bg-stone-900 dark:bg-stone-100'
-                    }`}
+                  }`}
                 />
                 <span
-                  className={`block h-[2.5px] w-5 sm:w-6.5 rounded-full transition-all duration-300 ease-in-out ${isMobileMenuOpen
-                      ? '-rotate-45 -translate-y-[8px] bg-shubban-gold'
+                  className={`block h-[2px] w-4.5 rounded-full transition-all duration-300 ease-in-out ${
+                    isMobileMenuOpen
+                      ? '-rotate-45 -translate-y-[6px] bg-shubban-gold'
                       : 'bg-stone-900 dark:bg-stone-100'
-                    }`}
+                  }`}
                 />
               </button>
-              <Logo size="md" showTagline={true} />
+              <Logo size="sm" showTagline={false} />
             </div>
 
             {/* Prominent Global Search Bar (Desktop) with Live Autocomplete */}
@@ -533,17 +536,8 @@ export default function Header() {
                 )}
             </div>
 
-            {/* Action Icons: Search (mobile), Theme, Notifications, Cart, Account */}
+            {/* Action Icons: Theme, Notifications, Cart, Account */}
             <div className="flex items-center gap-1 sm:gap-3 flex-shrink-0">
-              {/* Mobile Search Button */}
-              <button
-                onClick={() => setIsSearchOpen(!isSearchOpen)}
-                className="lg:hidden p-1.5 sm:p-2 rounded-full text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
-                aria-label="Search"
-              >
-                <Search className="w-5 h-5" />
-              </button>
-
               {/* Mobile Theme Toggle */}
               <button
                 onClick={toggleTheme}
@@ -551,7 +545,7 @@ export default function Header() {
                 suppressHydrationWarning
                 className="lg:hidden p-1.5 sm:p-2 rounded-full text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
               >
-                {mounted && theme === 'dark' ? <Sun className="w-5 h-5 text-shubban-gold" /> : <Moon className="w-5 h-5" />}
+                {mounted && theme === 'dark' ? <Sun className="w-4.5 h-4.5 text-shubban-gold" /> : <Moon className="w-4.5 h-4.5" />}
               </button>
 
               {/* Notifications Dropdown */}
@@ -792,28 +786,59 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Mobile Search Overlay Bar */}
-          {isSearchOpen && (
-            <div className="lg:hidden pb-3 pt-1">
-              <form onSubmit={handleSearchSubmit} className="relative w-full">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="বই, লেখক, সাময়িকী বা প্রবন্ধ খুঁজুন..."
-                  className="w-full pl-10 pr-20 py-2 text-sm rounded-lg bg-stone-100 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 font-bengali focus:outline-none focus:ring-2 focus:ring-shubban-gold"
-                  autoFocus
-                />
-                <Search className="absolute left-3 top-2.5 w-4 h-4 text-stone-400" />
-                <button
-                  type="submit"
-                  className="absolute right-1 top-1 px-3 py-1 rounded bg-shubban-green text-shubban-ivory text-xs font-bengali"
+          {/* Mobile App Search Bar (Permanent Minimalist Search Pill — bKash / MyGP Style) */}
+          <div className="lg:hidden pb-2 pt-0.5 relative" ref={searchRef}>
+            <form onSubmit={handleSearchSubmit} className="relative w-full">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="বই, লেখক, আতর বা বিষয় খুঁজুন..."
+                className="w-full pl-9 pr-16 py-2 text-xs rounded-xl bg-stone-100 dark:bg-stone-800/90 border border-stone-200/80 dark:border-stone-700/80 font-bengali text-stone-900 dark:text-stone-100 placeholder-stone-400 focus:outline-none focus:ring-1.5 focus:ring-shubban-gold shadow-2xs transition-all"
+              />
+              <Search className="absolute left-3 top-2.5 w-3.5 h-3.5 text-stone-400" />
+              <button
+                type="submit"
+                className="absolute right-1 top-1 px-3 py-1 rounded-lg bg-shubban-green hover:bg-shubban-green-700 text-shubban-ivory text-[11px] font-bengali font-bold transition-all active:scale-95 shadow-xs"
+              >
+                খুঁজুন
+              </button>
+            </form>
+
+            {/* Mobile Autocomplete Dropdown */}
+            {(liveResults.books?.length > 0 || liveResults.articles?.length > 0) && (
+              <div className="absolute top-11 left-0 right-0 bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-2xl p-3 z-50 font-bengali space-y-2 max-h-80 overflow-y-auto">
+                {liveResults.books?.slice(0, 4).map((b) => (
+                  <Link
+                    key={b.id}
+                    href={`/books/${b.slug}`}
+                    onClick={() => setLiveResults({ books: [], articles: [] })}
+                    className="flex items-center gap-2.5 p-1.5 rounded-xl hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors"
+                  >
+                    <div className="w-7 h-9 rounded overflow-hidden bg-stone-100 flex-shrink-0">
+                      <img src={b.coverImage} alt={b.title} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <span className="font-serif font-bold text-xs text-stone-900 dark:text-stone-100 block line-clamp-1">
+                        {b.title}
+                      </span>
+                      <span className="text-[10px] text-stone-500">{b.author?.name}</span>
+                    </div>
+                    <span className="text-[11px] font-bold text-shubban-green dark:text-shubban-gold">
+                      {formatTaka(b.discountPrice || b.price)}
+                    </span>
+                  </Link>
+                ))}
+                <Link
+                  href={`/search?q=${encodeURIComponent(searchQuery)}`}
+                  onClick={() => setLiveResults({ books: [], articles: [] })}
+                  className="block text-center text-xs font-bold text-shubban-green dark:text-shubban-gold pt-2 border-t border-stone-100 dark:border-stone-800"
                 >
-                  খুঁজুন
-                </button>
-              </form>
-            </div>
-          )}
+                  সব ফলাফল দেখুন &rarr;
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Main Categories Navigation Bar (Desktop) */}
