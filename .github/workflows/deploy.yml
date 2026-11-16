@@ -37,7 +37,7 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
-          NEXTAUTH_URL: https://shubbanlibrary.atrbd.com
+          NEXTAUTH_URL: https://library.atrbd.com
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
@@ -55,7 +55,7 @@ jobs:
           cat << 'EOF' > .env
           DATABASE_URL="${{ secrets.DATABASE_URL }}"
           NEXTAUTH_SECRET="${{ secrets.NEXTAUTH_SECRET }}"
-          NEXTAUTH_URL="https://shubbanlibrary.atrbd.com"
+          NEXTAUTH_URL="https://library.atrbd.com"
           NODE_ENV="production"
           PORT=3000
           EOF
@@ -66,7 +66,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_DEPLOY_PATH || 'shubbanlibrary.atrbd.com/' }}
+          server-dir: ${{ secrets.FTP_DEPLOY_PATH || 'library.atrbd.com/' }}
           exclude: |
             **/.git*
             **/.git*/**

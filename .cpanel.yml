@@ -1,8 +1,9 @@
 ---
 deployment:
   tasks:
-    # 1. Define destination application directory
-    - export DEPLOYPATH=/home/anowerit/shubbanlibrary.atrbd.com
+    # 1. Determine destination directory (library.atrbd.com or shubbanlibrary.atrbd.com)
+    - export DEPLOYPATH=/home/anowerit/library.atrbd.com
+    - if [ ! -d "$DEPLOYPATH" ]; then export DEPLOYPATH=/home/anowerit/shubbanlibrary.atrbd.com; fi
     # 2. Copy source files to application directory
     - /bin/cp -R * $DEPLOYPATH/
     - /bin/cp -R .next $DEPLOYPATH/ 2>/dev/null || true
