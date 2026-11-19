@@ -65,5 +65,34 @@ if (fs.existsSync(prismaClientSrc)) {
   copyRecursiveSync(prismaClientSrc, prismaClientDest);
 }
 
+// 6. Patch .next/standalone/server.js for Phusion Passenger & Anti-Loop Safeguards
+const standaloneServerPath = path.join(standaloneDir, 'server.js');
+if (fs.existsSync(standaloneServerPath)) {
+  console.log('🛡️ Patching standalone server.js with Phusion Passenger socket support & anti-loop guards...');
+  let serverCode = fs.readFileSync(standaloneServerPath, 'utf8');
+
+  // Replace hardcoded port and hostname
+  serverCode = serverCode.replace(
+    /const currentPort = parseInt\(process\.env\.PORT, 10\) \|\| 3000\s*const hostname = process\.env\.HOSTNAME \|\| '0\.0\.0\.0'/,
+    `const isPassenger = typeof PhusionPassenger !== 'undefined' || process.env.PASSENGER_APP_ENV || process.env.PORT === 'passenger';
+const currentPort = isPassenger ? 'passenger' : (parseInt(process.env.PORT, 10) || 3000);
+const hostname = isPassenger ? undefined : (process.env.HOSTNAME || '0.0.0.0');`
+  );
+
+  // Replace fast-exit crash loop with 10s cooldown
+  serverCode = serverCode.replace(
+    /\.catch\(\(err\) => \{\s*console\.error\(err\);\s*process\.exit\(1\);\s*\}\);/,
+    `.catch((err) => {
+  console.error('Fatal Next.js standalone server error:', err);
+  // Anti-loop safeguard: sleep 10 seconds before exit to prevent Passenger rapid respawn loops
+  setTimeout(() => {
+    process.exit(1);
+  }, 10000);
+});`
+  );
+
+  fs.writeFileSync(standaloneServerPath, serverCode);
+}
+
 console.log('\n✅ cPanel Standalone package successfully prepared in: .next/standalone/');
 console.log('💡 You can now simply zip the contents of ".next/standalone" and upload to cPanel!');

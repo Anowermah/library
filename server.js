@@ -5,13 +5,19 @@ const path = require('path');
 const fs = require('fs');
 const next = require('next');
 
-// Always enforce production mode on cPanel and point dir strictly to __dirname
+// Detect Phusion Passenger environment on cPanel
+const isPassenger = typeof PhusionPassenger !== 'undefined' || process.env.PASSENGER_APP_ENV || process.env.PORT === 'passenger';
+
 const dev = false;
-const hostname = process.env.HOSTNAME || '0.0.0.0';
-const port = parseInt(process.env.PORT, 10) || 3000;
+const hostname = isPassenger ? undefined : (process.env.HOSTNAME || '0.0.0.0');
+const port = isPassenger ? 'passenger' : (parseInt(process.env.PORT, 10) || 3000);
+
+if (typeof PhusionPassenger !== 'undefined') {
+  PhusionPassenger.configure({ autoInstall: false });
+}
 
 // Initialize Next.js explicitly with __dirname so it always finds .next
-const app = next({ dev, hostname, port, dir: __dirname });
+const app = next({ dev, hostname, port: typeof port === 'number' ? port : 3000, dir: __dirname });
 const handle = app.getRequestHandler();
 
 const MIME_TYPES = {
@@ -58,7 +64,7 @@ function serveStaticFile(filePath, res, isImmutable = false) {
 }
 
 app.prepare().then(() => {
-  createServer(async (req, res) => {
+  const server = createServer(async (req, res) => {
     try {
       const parsedUrl = parse(req.url, true);
       const { pathname } = parsedUrl;
@@ -89,14 +95,29 @@ app.prepare().then(() => {
       res.statusCode = 500;
       res.end('Internal Server Error');
     }
-  }).listen(port, (err) => {
-    if (err) {
-      console.error('Failed to bind server to port:', err);
-      process.exit(1);
-    }
-    console.log(`> Shubban Library server ready on http://${hostname}:${port}`);
   });
+
+  server.on('error', (err) => {
+    console.error('Server listen error:', err);
+    // Anti-loop safeguard: sleep 10 seconds before exit to prevent Passenger rapid respawn loops
+    setTimeout(() => {
+      process.exit(1);
+    }, 10000);
+  });
+
+  if (isPassenger) {
+    server.listen('passenger', () => {
+      console.log('> Shubban Library server ready on Phusion Passenger socket');
+    });
+  } else {
+    server.listen(port, hostname, () => {
+      console.log(`> Shubban Library server ready on http://${hostname}:${port}`);
+    });
+  }
 }).catch((err) => {
   console.error('Fatal error preparing Next.js application:', err);
-  process.exit(1);
+  // Anti-loop safeguard: sleep 10 seconds before exit
+  setTimeout(() => {
+    process.exit(1);
+  }, 10000);
 });

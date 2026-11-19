@@ -2,12 +2,21 @@
 # Shubban Library — Production cPanel Apache / LiteSpeed Configuration
 # ==============================================================================
 
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/anowerit/library.atrbd.com"
+PassengerBaseURI "/"
+PassengerNodejs "/home/anowerit/nodevenv/library.atrbd.com/20/bin/node"
+PassengerAppType node
+PassengerStartupFile server.js
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # 1. Force HTTPS
+  # 1. Force HTTPS (Safe for Cloudflare, LiteSpeed, and SSL Reverse Proxies)
   RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # 2. Direct static serving for Next.js assets (_next/static)

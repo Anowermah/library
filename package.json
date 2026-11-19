@@ -11,7 +11,8 @@
     "db:push": "prisma db push",
     "db:seed": "node prisma/seed.js",
     "cpanel:prepare": "node scripts/prepare-cpanel.js",
-    "build:cpanel": "next build && node scripts/prepare-cpanel.js && tar -a -c -f shubban-ready-deploy.zip -C .next/standalone ."
+    "build:cpanel": "next build && node scripts/prepare-cpanel.js && tar -a -c -f shubban-ready-deploy.zip -C .next/standalone .",
+    "deploy:git": "node scripts/deploy-to-branch.js"
   },
   "dependencies": {
     "@prisma/client": "^5.21.1",
