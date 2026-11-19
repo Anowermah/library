@@ -7,6 +7,7 @@ import MainPwaManager from '@/components/pwa/MainPwaManager';
 import FloatingIslamicAiWidget from '@/components/islamic-ai/FloatingIslamicAiWidget';
 import FloatingAdPopup from '@/components/ads/FloatingAdPopup';
 import ScrollToTop from '@/components/layout/ScrollToTop';
+import { getCachedSiteSettings } from '@/lib/cache';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,15 +28,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function StorefrontLayout({
+export default async function StorefrontLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const siteSettings = await getCachedSiteSettings().catch(() => []);
+  const stickySetting = siteSettings.find((s: any) => s.key === 'header_sticky_enabled')?.value ?? 'true';
+  const isSticky = stickySetting !== 'false';
+
   return (
-    <div className="flex flex-col min-h-screen overflow-x-hidden w-full relative">
-      <Header />
-      <main className="flex-1 pb-24 md:pb-0 overflow-x-hidden w-full">{children}</main>
+    <div className="flex flex-col min-h-screen overflow-x-clip w-full relative">
+      <Header isSticky={isSticky} />
+      <main className="flex-1 pb-24 md:pb-0 overflow-x-clip w-full">{children}</main>
       <Footer />
       <MobileBottomNav />
       <FloatingIslamicAiWidget />

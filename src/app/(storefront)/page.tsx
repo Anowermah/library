@@ -309,22 +309,22 @@ export default async function HomePage() {
   const fallbackSections = [
     { id: 'sec_slider', sectionKey: 'slider', title: 'হিরো প্রমোশনাল স্লাইডার', subtitle: '', isEnabled: true, badge: 'হিরো', viewAllUrl: null },
     { id: 'sec_categories', sectionKey: 'categories', title: 'জনপ্রিয় বিষয় ও বিভাগসমূহ', subtitle: '', isEnabled: true, badge: 'ক্যাটাগরি', viewAllUrl: '/categories' },
-    { id: 'sec_islamic_ai', sectionKey: 'islamic_ai', title: 'আপনার ইসলামিক প্রশ্নের উত্তর খুঁজুন', subtitle: 'পবিত্র কুরআন, নির্ভরযোগ্য তাফসির ও যাচাইকৃত হাদিসের আলোকে ইসলামিক বিষয়ে জানুন ও শিখুন।', isEnabled: true, badge: 'প্রামাণ্য ইসলামিক এআই', viewAllUrl: '/islamic-ai' },
+    { id: 'sec_islamic_ai', sectionKey: 'islamic_ai', title: 'ইসলামিক এআই নলেজ অ্যাসিস্ট্যান্ট', subtitle: 'কুরআন ও বিশুদ্ধ হাদিসের নির্ভরযোগ্য সমাধান', isEnabled: true, badge: 'ইসলামিক এআই', viewAllUrl: '/islamic-ai' },
     { id: 'sec_flash_sale', sectionKey: 'flash_sale', title: 'ফ্ল্যাশ সেল ও বিশেষ অফার', subtitle: '', isEnabled: true, badge: 'হট ডিল', viewAllUrl: '/books?filter=discount' },
-    { id: 'sec_featured_books', sectionKey: 'featured_books', title: 'বিশেষ নির্বাচিত বইসমূহ', subtitle: 'নির্বাচিত গ্রন্থ সংগ্রহ', isEnabled: true, badge: 'নির্বাচিত সংগ্রহ', viewAllUrl: '/books?featured=true' },
-    { id: 'sec_digital_library', sectionKey: 'digital_library', title: 'জনপ্রিয় উন্মুক্ত ও ফ্রি ডিজিটাল বই', subtitle: 'কোনো চার্জ ছাড়াই যে-কেউ ব্রাউজারে পড়তে এবং অনুমোদিত কপি ডাউনলোড করতে পারেন।', isEnabled: true, badge: 'মুক্ত পাঠাগার', viewAllUrl: '/digital-library?free=true' },
-    { id: 'sec_new_bestsellers', sectionKey: 'new_bestsellers', title: 'নতুন আগমন ও বেস্টসেলার সংকলন', subtitle: '', isEnabled: true, badge: 'শীর্ষ তালিকা', viewAllUrl: '/books' },
-    { id: 'sec_islamic_books', sectionKey: 'islamic_books', title: 'ইসলামিক বই ও প্রামাণ্য শাস্ত্রীয় সংকলন', subtitle: 'চিরায়ত তাফসীর, বিশুদ্ধ হাদিস গ্রন্থ, নবীজীবন এবং আদর্শিক ইসলামিক জ্ঞানকোষ', isEnabled: true, badge: 'কুরআন, হাদিস, সীরাত ও ফিকহ', viewAllUrl: '/books?category=islamic' },
-    { id: 'sec_lifestyle', sectionKey: 'lifestyle', title: 'ইসলামিক লাইফস্টাইল ও আতর কালেকশন', subtitle: 'ওয়াফিজীবন সুন্নাহ সামগ্রী', isEnabled: true, badge: 'সুন্নাহসম্মত সামগ্রী', viewAllUrl: '/books?category=islamic-lifestyle' },
-    { id: 'sec_donations', sectionKey: 'donations', title: 'মানবতার কল্যাণে আপনার সাদাকায়ে জারিয়া', subtitle: 'শতভাগ আমানতদারিতা ও শরিয়াহসম্মত উপায়ে পরিচালিত দ্বীনি শিক্ষা ও মানবসেবামূলক প্রজেক্ট', isEnabled: true, badge: 'আস-সুন্নাহ ও শুব্বান সদকাহ ফান্ড', viewAllUrl: '/donations' },
-    { id: 'sec_magazines', sectionKey: 'magazines', title: 'সাপ্তাহিক ও মাসিক পত্রিকা', subtitle: 'নিয়মিত প্রকাশনা ও সাময়িকী', isEnabled: true, badge: 'সাময়িকী ও আর্কাইভ', viewAllUrl: '/magazines' },
-    { id: 'sec_articles', sectionKey: 'articles', title: 'সাম্প্রতিক প্রবন্ধ ও চিন্তাশীল নিবন্ধ', subtitle: 'মননশীল সম্পাদকীয়', isEnabled: true, badge: 'মননশীল সম্পাদকীয়', viewAllUrl: '/articles' },
-    { id: 'sec_research_qa', sectionKey: 'research_qa', title: 'গবেষণাপত্র ও একাডেমিয়া / প্রশ্নোত্তর ফোরাম', subtitle: '', isEnabled: true, badge: 'জ্ঞানজিজ্ঞাসা', viewAllUrl: '/questions' },
-    { id: 'sec_vendors', sectionKey: 'vendors', title: 'শীর্ষ মার্কেটপ্লেস বিক্রেতা ও প্রতিষ্ঠান', subtitle: '', isEnabled: true, badge: 'মাল্টি-ভেন্ডর মার্কেটপ্লেস', viewAllUrl: '/seller/apply' },
-    { id: 'sec_authors', sectionKey: 'authors', title: 'বরেণ্য লেখক ও চিন্তাশীল সাহিত্যিক', subtitle: '', isEnabled: true, badge: 'বরেণ্য লেখক', viewAllUrl: '/authors' },
-    { id: 'sec_publishers', sectionKey: 'publishers', title: 'শীর্ষ প্রকাশনী সংস্থা', subtitle: '', isEnabled: true, badge: 'প্রকাশনা প্রতিষ্ঠান', viewAllUrl: '/publishers' },
-    { id: 'sec_membership', sectionKey: 'membership', title: 'পুরো ডিজিটাল লাইব্রেরীর অবারিত প্রবেশাধিকার নিন', subtitle: 'মাত্র ১৯৯ টাকা/মাস থেকে শুরু', isEnabled: true, badge: 'শুব্বান জ্ঞান সাধক মেম্বারশিপ', viewAllUrl: '/membership' },
-    { id: 'sec_newsletter', sectionKey: 'newsletter', title: 'শুব্বান পাঠক ও গবেষক কমিউনিটি', subtitle: '', isEnabled: true, badge: 'নিউজলেটার', viewAllUrl: null },
+    { id: 'sec_featured_books', sectionKey: 'featured_books', title: 'নির্বাচিত বইসমূহ', subtitle: 'চিরায়ত ও আধুনিক সেরা গ্রন্থতালিকা', isEnabled: true, badge: 'নির্বাচিত সংগ্রহ', viewAllUrl: '/books?featured=true' },
+    { id: 'sec_digital_library', sectionKey: 'digital_library', title: 'উন্মুক্ত ও ফ্রি ডিজিটাল বই', subtitle: 'ব্রাউজারে সরাসরি পড়ুন ও ডাউনলোড করুন', isEnabled: true, badge: 'মুক্ত পাঠাগার', viewAllUrl: '/digital-library?free=true' },
+    { id: 'sec_new_bestsellers', sectionKey: 'new_bestsellers', title: 'নতুন বই ও বেস্টসেলার', subtitle: '', isEnabled: true, badge: 'শীর্ষ তালিকা', viewAllUrl: '/books' },
+    { id: 'sec_islamic_books', sectionKey: 'islamic_books', title: 'ইসলামিক শাস্ত্রীয় সংকলন', subtitle: 'চিরায়ত তাফসির, হাদিস ও ফিকহ গ্রন্থকোষ', isEnabled: true, badge: 'ইসলামিক বই', viewAllUrl: '/books?category=islamic' },
+    { id: 'sec_lifestyle', sectionKey: 'lifestyle', title: 'ইসলামিক লাইফস্টাইল ও আতর', subtitle: 'খাঁটি আতর ও সুন্নাহ সামগ্রী', isEnabled: true, badge: 'সুন্নাহ সামগ্রী', viewAllUrl: '/books?category=islamic-lifestyle' },
+    { id: 'sec_donations', sectionKey: 'donations', title: 'সদকায়ে জারিয়া ও কল্যাণ ফান্ড', subtitle: 'দ্বীনি শিক্ষা ও মানবসেবায় আপনার বিশ্বস্ত অনুদান', isEnabled: true, badge: 'সদকাহ ফান্ড', viewAllUrl: '/donations' },
+    { id: 'sec_magazines', sectionKey: 'magazines', title: 'সাময়িকী ও পত্রিকা আর্কাইভ', subtitle: 'জ্ঞানভিত্তিক নিয়মিত সাময়িকী ও পত্রিকা', isEnabled: true, badge: 'সাময়িকী', viewAllUrl: '/magazines' },
+    { id: 'sec_articles', sectionKey: 'articles', title: 'সাম্প্রতিক প্রবন্ধ ও নিবন্ধ', subtitle: 'মননশীল ও গবেষণামূলক সম্পাদকীয়', isEnabled: true, badge: 'প্রবন্ধ', viewAllUrl: '/articles' },
+    { id: 'sec_research_qa', sectionKey: 'research_qa', title: 'গবেষণাপত্র ও প্রশ্নোত্তর ফোরাম', subtitle: '', isEnabled: true, badge: 'জ্ঞানজিজ্ঞাসা', viewAllUrl: '/questions' },
+    { id: 'sec_vendors', sectionKey: 'vendors', title: 'ভেরিফায়েড মার্কেটপ্লেস সেলার', subtitle: '', isEnabled: true, badge: 'মার্কেটপ্লেস', viewAllUrl: '/seller/apply' },
+    { id: 'sec_authors', sectionKey: 'authors', title: 'জনপ্রিয় লেখকবৃন্দ', subtitle: '', isEnabled: true, badge: 'লেখক', viewAllUrl: '/authors' },
+    { id: 'sec_publishers', sectionKey: 'publishers', title: 'শীর্ষ প্রকাশনীসমূহ', subtitle: '', isEnabled: true, badge: 'প্রকাশনী', viewAllUrl: '/publishers' },
+    { id: 'sec_membership', sectionKey: 'membership', title: 'ডিজিটাল লাইব্রেরী মেম্বারশিপ', subtitle: 'হাজারো বই ও সাময়িকী পড়ার আনলিমিটেড অ্যাক্সেস', isEnabled: true, badge: 'মেম্বারশিপ', viewAllUrl: '/membership' },
+    { id: 'sec_newsletter', sectionKey: 'newsletter', title: 'শুব্বান পাঠক কমিউনিটি', subtitle: '', isEnabled: true, badge: 'নিউজলেটার', viewAllUrl: null },
   ];
 
   // Ensure Islamic AI section is present on the homepage
@@ -333,10 +333,10 @@ export default async function HomePage() {
     sectionsToRender.splice(2, 0, {
       id: 'sec_islamic_ai',
       sectionKey: 'islamic_ai',
-      title: 'আপনার ইসলামিক প্রশ্নের উত্তর খুঁজুন',
-      subtitle: 'পবিত্র কুরআন, নির্ভরযোগ্য তাফসির ও যাচাইকৃত হাদিসের আলোকে ইসলামিক বিষয়ে জানুন ও শিখুন।',
+      title: 'ইসলামিক এআই নলেজ অ্যাসিস্ট্যান্ট',
+      subtitle: 'কুরআন ও বিশুদ্ধ হাদিসের নির্ভরযোগ্য সমাধান',
       isEnabled: true,
-      badge: 'প্রামাণ্য ইসলামিক এআই',
+      badge: 'ইসলামিক এআই',
       viewAllUrl: '/islamic-ai',
     } as any);
   }
@@ -657,91 +657,91 @@ export default async function HomePage() {
       case 'donations':
         if (donationCampaigns.length === 0) return null;
         return (
-          <section key={sec.id} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-3xl bg-gradient-to-br from-emerald-950 via-shubban-green to-emerald-950 text-white p-6 sm:p-10 border-2 border-shubban-gold/30 shadow-2xl">
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-emerald-800/80 pb-6">
+          <section key={sec.id} className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 font-bengali">
+            <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-br from-emerald-950 via-shubban-green to-emerald-950 text-white p-5 sm:p-8 border border-shubban-gold/30 shadow-xl">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6 border-b border-emerald-800/80 pb-4">
                 <div>
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30 mb-2">
-                    <HeartHandshake className="w-4 h-4" />
-                    <span>{sec.badge || 'আস-সুন্নাহ ও শুব্বান সদকাহ ফান্ড'}</span>
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30 mb-1.5">
+                    <HeartHandshake className="w-3.5 h-3.5" />
+                    <span>{sec.badge || 'সদকাহ ও মানবসেবা'}</span>
                   </div>
-                  <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
-                    {sec.title || 'মানবতার কল্যাণে আপনার সাদাকায়ে জারিয়া'}
+                  <h2 className="font-serif text-xl sm:text-2xl font-bold text-white">
+                    {sec.title || 'সদকায়ে জারিয়া ও কল্যাণ ফান্ড'}
                   </h2>
-                  <p className="text-xs sm:text-sm text-emerald-100/80 mt-1 max-w-xl">
-                    {sec.subtitle || 'শতভাগ আমানতদারিতা ও শরিয়াহসম্মত উপায়ে পরিচালিত দ্বীনি শিক্ষা ও মানবসেবামূলক প্রজেক্ট। প্রতিটি অনুদানের সাথে পাবেন সরকারি কর অব্যাহতিযোগ্য ডিজিটাল ভেরিফায়েড রসিদ।'}
+                  <p className="text-xs sm:text-sm text-emerald-100/80 mt-0.5">
+                    {sec.subtitle || 'দ্বীনি শিক্ষা ও মানবসেবায় আপনার বিশ্বস্ত অনুদান'}
                   </p>
                 </div>
                 <Link
                   href={sec.viewAllUrl || '/donations'}
-                  className="px-5 py-2.5 rounded-xl bg-shubban-gold hover:bg-shubban-gold-hover text-shubban-green-950 font-bold text-xs sm:text-sm shadow-md transition-transform hover:-translate-y-0.5 whitespace-nowrap self-start md:self-end flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-xl bg-shubban-gold hover:bg-shubban-gold-hover text-stone-950 font-bold text-xs shadow transition-transform active:scale-95 whitespace-nowrap self-start sm:self-end flex items-center gap-1.5"
                 >
-                  <span>সকল ফান্ড ও ক্যাম্পেইন</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>সকল ফান্ড</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                 {donationCampaigns.map((camp) => {
                   const percent = Math.min(100, Math.round((camp.raisedAmount / camp.goalAmount) * 100));
                   return (
                     <div
                       key={camp.id}
-                      className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/15 overflow-hidden flex flex-col hover:bg-white/15 transition-all"
+                      className="bg-white/10 dark:bg-black/20 backdrop-blur-md rounded-2xl border border-white/15 overflow-hidden flex flex-col hover:bg-white/15 transition-all shadow-sm"
                     >
-                      <div className="relative aspect-[16/10] w-full overflow-hidden">
+                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-emerald-950/50">
                         <img
-                          src={camp.coverImage}
+                          src={camp.coverImage || '/images/hero-1.jpg'}
                           alt={camp.title}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                         />
-                        <span className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-amber-300 text-[10px] font-bold px-2.5 py-1 rounded-md border border-amber-400/30">
+                        <span className="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-sm text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded-md border border-amber-400/30">
                           {camp.category === 'RELIEF'
                             ? 'জরুরি ত্রাণ'
                             : camp.category === 'QURAN_DISTRIBUTION'
                               ? 'কুরআন বিতরণ'
                               : camp.category === 'WATER_WELL'
-                                ? 'বিশুদ্ধ পানি'
+                                ? 'সুপেয় পানি'
                                 : 'সদকায়ে জারিয়া'}
                         </span>
                       </div>
 
-                      <div className="p-5 flex flex-col flex-1">
-                        <h3 className="font-serif font-bold text-base text-white hover:text-amber-300 transition-colors mb-2 line-clamp-1">
+                      <div className="p-4 sm:p-5 flex flex-col flex-1">
+                        <h3 className="font-serif font-bold text-sm sm:text-base text-white hover:text-amber-300 transition-colors mb-1.5 line-clamp-1">
                           <Link href={`/donations/${camp.slug}`}>{camp.title}</Link>
                         </h3>
-                        <p className="text-xs text-emerald-100/75 line-clamp-2 leading-relaxed mb-4">
+                        <p className="text-[11px] sm:text-xs text-emerald-100/70 line-clamp-1 leading-relaxed mb-3">
                           {camp.description}
                         </p>
 
-                        <div className="mt-auto space-y-2">
-                          <div className="flex items-center justify-between text-xs font-semibold">
+                        <div className="mt-auto space-y-1.5">
+                          <div className="flex items-center justify-between text-xs font-bold">
                             <span className="text-amber-300">
-                              উত্তোলিত: ৳{toBengaliNumber(Math.round(camp.raisedAmount).toLocaleString('en-IN'))}
+                              ৳{toBengaliNumber(Math.round(camp.raisedAmount).toLocaleString('en-IN'))}
                             </span>
-                            <span className="text-emerald-200">
-                              {toBengaliNumber(percent)}%
+                            <span className="text-emerald-200 text-[11px]">
+                              {toBengaliNumber(percent)}% উত্তোলিত
                             </span>
                           </div>
-                          <div className="w-full h-2 bg-black/40 rounded-full overflow-hidden">
+                          <div className="w-full h-1.5 bg-black/40 rounded-full overflow-hidden">
                             <div
                               className="h-full bg-gradient-to-r from-amber-400 to-emerald-400 rounded-full transition-all duration-500"
                               style={{ width: `${percent}%` }}
                             />
                           </div>
-                          <div className="flex items-center justify-between text-[11px] text-emerald-200/70 pt-1">
+                          <div className="flex items-center justify-between text-[10px] text-emerald-200/60 pt-0.5">
                             <span>লক্ষ্য: ৳{toBengaliNumber(Math.round(camp.goalAmount).toLocaleString('en-IN'))}</span>
                             <span>{toBengaliNumber(camp.donorCount)} জন দাতা</span>
                           </div>
                         </div>
 
-                        <div className="mt-4 pt-3 border-t border-white/10">
+                        <div className="mt-3.5 pt-2.5 border-t border-white/10">
                           <Link
                             href={`/donations/${camp.slug}`}
-                            className="w-full py-2 rounded-xl bg-shubban-gold hover:bg-shubban-gold-hover text-shubban-green-950 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow"
+                            className="w-full py-2 rounded-xl bg-shubban-gold hover:bg-shubban-gold-hover text-stone-950 font-bold text-xs flex items-center justify-center gap-1.5 transition-transform active:scale-95 shadow"
                           >
                             <HeartHandshake className="w-3.5 h-3.5" />
-                            <span>সরাসরি দান করুন</span>
+                            <span>দান করুন</span>
                           </Link>
                         </div>
                       </div>
@@ -750,14 +750,14 @@ export default async function HomePage() {
                 })}
               </div>
 
-              <div className="mt-8 pt-6 border-t border-emerald-800/80 flex flex-wrap items-center justify-between text-xs text-emerald-100/80 gap-3">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-amber-300" />
-                  <span>১০০% আমানতদারিতা ও শরিয়াহ বোর্ড কর্তৃক নিয়মিত অডিটকৃত ফান্ড</span>
+              <div className="mt-5 pt-3.5 border-t border-emerald-800/60 flex flex-wrap items-center justify-between text-[11px] text-emerald-100/70 gap-2">
+                <div className="flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-amber-300" />
+                  <span>১০০% আমানতদারিতা ও শরিয়াহ বোর্ড অডিটকৃত</span>
                 </div>
-                <div className="flex items-center gap-4 text-[11px]">
-                  <span>✓ তাত্ক্ষণিক ডিজিটাল কিউআর রসিদ</span>
-                  <span>✓ বিকাশ, নগদ ও ভিসা/মাস্টারকার্ড সুরক্ষিত গেটওয়ে</span>
+                <div className="flex items-center gap-3 text-[10px] sm:text-[11px]">
+                  <span>✓ তাৎক্ষণিক ডিজিটাল রসিদ</span>
+                  <span>✓ বিকাশ, নগদ ও কার্ড পেমেন্ট</span>
                 </div>
               </div>
             </div>

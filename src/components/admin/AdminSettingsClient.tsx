@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Save, CheckCircle2, LayoutTemplate, Layers, CheckSquare, Square } from 'lucide-react';
+import { Save, CheckCircle2, LayoutTemplate, Layers, CheckSquare, Square, PanelTop } from 'lucide-react';
 
 interface SettingsProps {
   initialSettings: Record<string, string>;
@@ -16,6 +16,8 @@ export default function AdminSettingsClient({ initialSettings }: SettingsProps) 
     contact_address: initialSettings.contact_address || 'বাংলাবাজার ও কাঁটাবন জ্ঞান চত্বর, ঢাকা, বাংলাদেশ',
     delivery_fee_inside_dhaka: initialSettings.delivery_fee_inside_dhaka || '60',
     delivery_fee_outside_dhaka: initialSettings.delivery_fee_outside_dhaka || '110',
+    // Header & Navigation Settings
+    header_sticky_enabled: initialSettings.header_sticky_enabled ?? 'true',
     // Homepage Section CMS Toggles (Default to true if not explicitly set to 'false')
     home_show_slider: initialSettings.home_show_slider ?? 'true',
     home_show_categories: initialSettings.home_show_categories ?? 'true',
@@ -231,7 +233,52 @@ export default function AdminSettingsClient({ initialSettings }: SettingsProps) 
         </div>
       </div>
 
-      {/* 3. Homepage Section CMS Controls (Dynamic Section Visibility) */}
+      {/* 3. Navigation & Header Settings */}
+      <div className="bg-white dark:bg-shubban-darkCard rounded-2xl border border-stone-200 dark:border-stone-800 p-6 sm:p-8 shadow-sm space-y-5">
+        <div className="flex items-center justify-between pb-2 border-b border-stone-100 dark:border-stone-800">
+          <div>
+            <h2 className="font-serif font-bold text-lg text-stone-900 dark:text-stone-100 flex items-center gap-2">
+              <PanelTop className="w-5 h-5 text-shubban-gold" />
+              <span>হেডার ও নেভিগেশন সেটিংস (Header & Navigation)</span>
+            </h2>
+            <p className="text-xs text-stone-500 mt-1">
+              ওয়েবসাইট ও মোবাইলে হেডার ডিসপ্লে আচরণ নিয়ন্ত্রণ করুন।
+            </p>
+          </div>
+          <span className="text-xs bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold px-3 py-1 rounded-full">
+            নেভিগেশন
+          </span>
+        </div>
+
+        <div className="pt-2">
+          <div
+            onClick={() => handleToggle('header_sticky_enabled')}
+            className={`p-4 rounded-xl border cursor-pointer transition-all flex items-start gap-3 select-none ${
+              settings.header_sticky_enabled !== 'false'
+                ? 'bg-shubban-green-50/60 dark:bg-shubban-green/10 border-shubban-green/30 dark:border-shubban-green/40'
+                : 'bg-stone-50 dark:bg-stone-900/50 border-stone-200 dark:border-stone-800 opacity-60'
+            }`}
+          >
+            <div className="mt-0.5 flex-shrink-0">
+              {settings.header_sticky_enabled !== 'false' ? (
+                <CheckSquare className="w-5 h-5 text-shubban-green dark:text-shubban-gold" />
+              ) : (
+                <Square className="w-5 h-5 text-stone-400" />
+              )}
+            </div>
+            <div>
+              <h4 className="font-semibold text-xs sm:text-sm text-stone-900 dark:text-stone-100">
+                স্টিকি হেডার সক্রিয় রাখুন (Sticky Header)
+              </h4>
+              <p className="text-[11px] text-stone-500 dark:text-stone-400 mt-0.5">
+                সক্রিয় থাকলে পেজ নিচে স্ক্রোল করার সময় হেডারটি স্ক্রিনের শীর্ষে পিন বা আটকে থাকবে (মোবাইল ও ডেস্কটপ)। নিষ্ক্রিয় করলে হেডার পেজের সাথে স্বাভাবিকভাবে স্ক্রোল হয়ে যাবে।
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 4. Homepage Section CMS Controls (Dynamic Section Visibility) */}
       <div className="bg-white dark:bg-shubban-darkCard rounded-2xl border border-stone-200 dark:border-stone-800 p-6 sm:p-8 shadow-sm space-y-5">
         <div className="flex items-center justify-between pb-2 border-b border-stone-100 dark:border-stone-800">
           <div>

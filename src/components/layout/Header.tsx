@@ -124,7 +124,11 @@ function getNavLinkIcon(href: string) {
   }
 }
 
-export default function Header() {
+interface HeaderProps {
+  isSticky?: boolean;
+}
+
+export default function Header({ isSticky = true }: HeaderProps) {
   const pathname = usePathname();
   const router = useRouter();
   const { theme, toggleTheme } = useTheme();
@@ -273,7 +277,11 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-shubban-darkBg/95 backdrop-blur-md border-b border-stone-200/80 dark:border-stone-800 transition-colors">
+      <header
+        className={`${
+          isSticky ? 'sticky top-0 z-40' : 'relative z-40'
+        } w-full bg-white/95 dark:bg-shubban-darkBg/95 backdrop-blur-md border-b border-stone-200/80 dark:border-stone-800 transition-all shadow-2xs`}
+      >
         {/* Top Utility Bar */}
         <div className="hidden lg:block bg-shubban-green text-shubban-ivory text-xs py-1.5 px-4">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
