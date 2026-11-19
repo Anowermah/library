@@ -49,13 +49,28 @@ const prismaDest = path.join(standaloneDir, 'prisma');
 console.log('📦 Copying prisma/ schema and database to standalone...');
 copyRecursiveSync(prismaSrc, prismaDest);
 
-// 4. Copy .env if exists
-const envSrc = path.join(__dirname, '..', '.env');
-const envDest = path.join(standaloneDir, '.env');
-if (fs.existsSync(envSrc)) {
-  console.log('📦 Copying .env to standalone...');
-  fs.copyFileSync(envSrc, envDest);
+// 3.1 Ensure standalone prisma schema uses MySQL for cPanel
+const standaloneSchemaPath = path.join(prismaDest, 'schema.prisma');
+if (fs.existsSync(standaloneSchemaPath)) {
+  let sContent = fs.readFileSync(standaloneSchemaPath, 'utf8');
+  sContent = sContent.replace('provider = "sqlite"', 'provider = "mysql"');
+  fs.writeFileSync(standaloneSchemaPath, sContent);
 }
+
+// 3.2 Copy MySQL import dump to standalone
+const sqlDumpSrc = path.join(__dirname, '..', 'shubban-mysql-complete-import.sql');
+if (fs.existsSync(sqlDumpSrc)) {
+  fs.copyFileSync(sqlDumpSrc, path.join(standaloneDir, 'shubban-mysql-complete-import.sql'));
+}
+
+// 4. Ensure production .env exists with MySQL connection string
+const envDest = path.join(standaloneDir, '.env');
+const envContent = `DATABASE_URL="mysql://anowerit_library:L1S%7DE%2C%7BkP%3Fb45Kr@localhost:3306/anowerit_library"
+NODE_ENV="production"
+NEXTAUTH_SECRET="shubban-library-secret-key-328904712895719827591823"
+NEXTAUTH_URL="https://library.atrbd.com"
+`;
+fs.writeFileSync(envDest, envContent);
 
 // 5. Copy multi-platform Prisma engine binaries to standalone
 const prismaClientSrc = path.join(__dirname, '..', 'node_modules', '.prisma', 'client');

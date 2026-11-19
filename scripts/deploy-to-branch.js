@@ -34,14 +34,20 @@ if (fs.existsSync(path.join(ROOT_DIR, 'public', '.htaccess'))) {
   );
 }
 
-// 4. Ensure production .env exists with correct SQLite path
+// 4. Ensure production .env exists with MySQL connection string
 const envPath = path.join(STANDALONE_DIR, '.env');
-const envContent = `DATABASE_URL="file:./dev.db"
+const envContent = `DATABASE_URL="mysql://anowerit_library:L1S%7DE%2C%7BkP%3Fb45Kr@localhost:3306/anowerit_library"
 NODE_ENV="production"
 NEXTAUTH_SECRET="shubban-library-secret-key-328904712895719827591823"
 NEXTAUTH_URL="https://library.atrbd.com"
 `;
 fs.writeFileSync(envPath, envContent);
+
+// Copy MySQL dump to standalone for cPanel import
+const sqlDumpSrc = path.join(ROOT_DIR, 'shubban-mysql-complete-import.sql');
+if (fs.existsSync(sqlDumpSrc)) {
+  fs.copyFileSync(sqlDumpSrc, path.join(STANDALONE_DIR, 'shubban-mysql-complete-import.sql'));
+}
 
 // 5. Initialize git in standalone and push to 'production' branch
 console.log('\n🚀 Step 3: Pushing compiled production build to GitHub branch "production"...');
