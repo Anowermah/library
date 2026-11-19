@@ -6,14 +6,22 @@ const fs = require('fs');
 const next = require('next');
 
 // Detect Phusion Passenger environment on cPanel
-const isPassenger = typeof PhusionPassenger !== 'undefined' || process.env.PASSENGER_APP_ENV || process.env.PORT === 'passenger';
+const isRealPassenger = typeof PhusionPassenger !== 'undefined';
 
 const dev = false;
-const hostname = isPassenger ? undefined : (process.env.HOSTNAME || '0.0.0.0');
-const port = isPassenger ? 'passenger' : (parseInt(process.env.PORT, 10) || 3000);
+let hostname;
+let port;
 
-if (typeof PhusionPassenger !== 'undefined') {
+if (isRealPassenger) {
+  port = 'passenger';
+  hostname = undefined;
   PhusionPassenger.configure({ autoInstall: false });
+} else if (process.env.PORT && !isNaN(parseInt(process.env.PORT, 10))) {
+  port = parseInt(process.env.PORT, 10);
+  hostname = process.env.HOSTNAME || '0.0.0.0';
+} else {
+  port = 3000;
+  hostname = process.env.HOSTNAME || '0.0.0.0';
 }
 
 // Initialize Next.js explicitly with __dirname so it always finds .next
@@ -105,7 +113,7 @@ app.prepare().then(() => {
     }, 10000);
   });
 
-  if (isPassenger) {
+  if (isRealPassenger) {
     server.listen('passenger', () => {
       console.log('> Shubban Library server ready on Phusion Passenger socket');
     });

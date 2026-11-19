@@ -74,9 +74,19 @@ if (fs.existsSync(standaloneServerPath)) {
   // Replace hardcoded port and hostname
   serverCode = serverCode.replace(
     /const currentPort = parseInt\(process\.env\.PORT, 10\) \|\| 3000\s*const hostname = process\.env\.HOSTNAME \|\| '0\.0\.0\.0'/,
-    `const isPassenger = typeof PhusionPassenger !== 'undefined' || process.env.PASSENGER_APP_ENV || process.env.PORT === 'passenger';
-const currentPort = isPassenger ? 'passenger' : (parseInt(process.env.PORT, 10) || 3000);
-const hostname = isPassenger ? undefined : (process.env.HOSTNAME || '0.0.0.0');`
+    `const isRealPassenger = typeof PhusionPassenger !== 'undefined';
+let currentPort;
+let hostname;
+if (isRealPassenger) {
+  currentPort = 'passenger';
+  hostname = undefined;
+} else if (process.env.PORT && !isNaN(parseInt(process.env.PORT, 10))) {
+  currentPort = parseInt(process.env.PORT, 10);
+  hostname = process.env.HOSTNAME || '0.0.0.0';
+} else {
+  currentPort = 3000;
+  hostname = process.env.HOSTNAME || '0.0.0.0';
+}`
   );
 
   // Replace fast-exit crash loop with 10s cooldown
