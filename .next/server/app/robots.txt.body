@@ -1,0 +1,11 @@
+User-Agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /seller/dashboard/
+Disallow: /account/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /api/
+Disallow: /_next/
+
+Sitemap: https://shubbanlibrary.com/sitemap.xml
