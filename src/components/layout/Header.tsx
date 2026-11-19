@@ -359,21 +359,21 @@ export default function Header() {
                 aria-controls="mobile-navigation-drawer"
               >
                 <span
-                  className={`block h-[2px] w-4.5 rounded-full transition-all duration-300 ease-in-out ${
+                  className={`block h-[2px] w-5 rounded-full transition-all duration-300 ease-in-out ${
                     isMobileMenuOpen
                       ? 'rotate-45 translate-y-[6px] bg-shubban-gold'
                       : 'bg-stone-900 dark:bg-stone-100'
                   }`}
                 />
                 <span
-                  className={`block h-[2px] w-4.5 rounded-full transition-all duration-200 ease-in-out ${
+                  className={`block h-[2px] w-5 rounded-full transition-all duration-200 ease-in-out ${
                     isMobileMenuOpen
                       ? 'opacity-0 scale-x-0'
                       : 'bg-stone-900 dark:bg-stone-100'
                   }`}
                 />
                 <span
-                  className={`block h-[2px] w-4.5 rounded-full transition-all duration-300 ease-in-out ${
+                  className={`block h-[2px] w-5 rounded-full transition-all duration-300 ease-in-out ${
                     isMobileMenuOpen
                       ? '-rotate-45 -translate-y-[6px] bg-shubban-gold'
                       : 'bg-stone-900 dark:bg-stone-100'
@@ -545,7 +545,7 @@ export default function Header() {
                 suppressHydrationWarning
                 className="lg:hidden p-1.5 sm:p-2 rounded-full text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
               >
-                {mounted && theme === 'dark' ? <Sun className="w-4.5 h-4.5 text-shubban-gold" /> : <Moon className="w-4.5 h-4.5" />}
+                {mounted && theme === 'dark' ? <Sun className="w-5 h-5 text-shubban-gold" /> : <Moon className="w-5 h-5" />}
               </button>
 
               {/* Notifications Dropdown */}

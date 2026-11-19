@@ -113,7 +113,7 @@ export default function FloatingAdPopup({
     return (
       <aside
         aria-label="শিক্ষা নোটিশ সংক্ষেপ"
-        className="fixed bottom-16 sm:bottom-6 left-3 sm:left-6 z-30 font-bengali animate-in fade-in zoom-in-90 duration-300"
+        className="fixed bottom-20 sm:bottom-6 left-3 sm:left-6 z-30 font-bengali animate-in fade-in zoom-in-90 duration-300"
       >
         <button
           onClick={handleToggleMinimize}
@@ -132,7 +132,7 @@ export default function FloatingAdPopup({
   return (
     <aside
       aria-label="শিক্ষা প্রতিষ্ঠান বিজ্ঞাপন নোটিশ"
-      className="fixed bottom-16 left-3 right-auto sm:bottom-6 sm:left-6 z-30 w-[calc(100vw-1.5rem)] max-w-[320px] sm:w-[330px] animate-in fade-in slide-in-from-bottom-5 duration-500 font-bengali pointer-events-auto"
+      className="fixed bottom-20 left-3 right-auto sm:bottom-6 sm:left-6 z-30 w-[calc(100vw-1.5rem)] max-w-[320px] sm:w-[330px] animate-in fade-in slide-in-from-bottom-5 duration-500 font-bengali pointer-events-auto"
     >
       <div className="relative rounded-2xl bg-white/95 dark:bg-stone-900/95 backdrop-blur-md border border-amber-500/30 dark:border-stone-800 shadow-2xl overflow-hidden p-3 transition-all hover:border-amber-400/60">
         {/* Header / Top Bar: Educational Badge + Minimize & Skip Buttons */}

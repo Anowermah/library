@@ -205,7 +205,7 @@ export default function FloatingIslamicAiWidget() {
   const whatsappBaseMessage = hotline?.config.whatsappDefaultMessage || 'আসসালামু আলাইকুম। শুব্বান লাইব্রেরী থেকে ইসলামিক পরামর্শ চাই।';
 
   return (
-    <div className="fixed bottom-16 right-3 sm:bottom-6 sm:right-6 z-40 font-bengali">
+    <div className="hidden md:block fixed bottom-6 right-6 z-40 font-bengali">
       {/* Floating Launcher Button */}
       {!isOpen && (
         <button

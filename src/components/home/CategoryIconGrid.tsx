@@ -113,17 +113,17 @@ export default function CategoryIconGrid() {
       </div>
 
       {/* 4-Column Grid on Mobile (bKash / MyGP / Nagad exact layout) */}
-      <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3 bg-white/70 dark:bg-stone-900/60 backdrop-blur-md p-2.5 sm:p-4 rounded-2xl sm:rounded-3xl border border-stone-200/70 dark:border-stone-800 shadow-sm">
+      <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-8 gap-1.5 sm:gap-3 bg-white/80 dark:bg-stone-900/70 backdrop-blur-md p-2.5 sm:p-4 rounded-2xl sm:rounded-3xl border border-stone-200/80 dark:border-stone-800 shadow-sm w-full">
         {QUICK_SERVICES.map((item) => (
           <Link
             key={item.id}
             href={item.href}
-            className="group flex flex-col items-center text-center p-1.5 rounded-xl transition-all active:scale-90"
+            className="group flex flex-col items-center justify-center text-center py-1 px-0.5 rounded-xl transition-all active:scale-95 w-full min-w-0"
           >
-            <div className="relative">
+            <div className="relative flex items-center justify-center">
               {/* App Icon Squircle */}
               <div
-                className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border flex items-center justify-center shadow-xs group-hover:shadow-md group-hover:scale-105 transition-all ${item.iconBg}`}
+                className={`w-11 h-11 sm:w-14 sm:h-14 rounded-2xl border flex items-center justify-center shadow-2xs group-hover:shadow-md group-hover:scale-105 transition-all ${item.iconBg}`}
               >
                 {item.icon}
               </div>
@@ -131,7 +131,7 @@ export default function CategoryIconGrid() {
               {/* Optional Micro Badge */}
               {item.badge && (
                 <span
-                  className={`absolute -top-1 -right-1 px-1 py-0.2 rounded-full text-[8px] sm:text-[9px] font-bold shadow-xs ${
+                  className={`absolute -top-1 -right-1.5 px-1.5 py-0.5 rounded-full text-[8px] sm:text-[9px] font-bold shadow-xs leading-none whitespace-nowrap z-10 ${
                     item.badgeColor || 'bg-shubban-gold text-stone-950'
                   }`}
                 >
@@ -141,7 +141,7 @@ export default function CategoryIconGrid() {
             </div>
 
             {/* Label */}
-            <span className="mt-1.5 text-[10.5px] sm:text-xs font-semibold text-stone-800 dark:text-stone-200 group-hover:text-shubban-gold transition-colors line-clamp-1 tracking-tight">
+            <span className="mt-1.5 text-[10px] sm:text-xs font-semibold text-stone-800 dark:text-stone-200 group-hover:text-shubban-gold transition-colors block w-full text-center truncate tracking-tight px-0.5">
               {item.name}
             </span>
           </Link>

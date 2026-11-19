@@ -170,15 +170,30 @@ export default function HomePromoSlider({ initialSlides }: HomePromoSliderProps 
 
   const slide = activeSlides[currentSlide] || activeSlides[0];
 
+  const touchStartX = useRef<number | null>(null);
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+    if (diff > 40) nextSlide();
+    else if (diff < -40) prevSlide();
+    touchStartX.current = null;
+  };
+
   return (
     <div
       className="relative overflow-hidden font-bengali px-3 sm:px-0 pt-2 sm:pt-0"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {/* Main Slide Stage — MyGP / bKash Compact App Banner Style on Mobile */}
       <div
-        className={`relative bg-gradient-to-r ${slide.bgGradient} text-shubban-ivory rounded-2xl sm:rounded-none min-h-[180px] sm:min-h-[440px] lg:min-h-[500px] flex items-center transition-all duration-700 shadow-md sm:shadow-none overflow-hidden`}
+        className={`relative bg-gradient-to-r ${slide.bgGradient} text-shubban-ivory rounded-2xl sm:rounded-none min-h-[170px] sm:min-h-[440px] lg:min-h-[500px] flex items-center transition-all duration-700 shadow-md sm:shadow-none overflow-hidden`}
       >
         {/* Mobile Background Image Layer */}
         <div className="sm:hidden absolute inset-0 z-0">
@@ -196,13 +211,13 @@ export default function HomePromoSlider({ initialSlides }: HomePromoSliderProps 
         {/* Background geometry pattern */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C49A45_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-4 sm:py-12 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-3.5 sm:py-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Content (Text & CTAs) */}
             <div className="lg:col-span-7 space-y-2 sm:space-y-5 text-left">
               <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-0.5 sm:py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] sm:text-xs font-bold text-shubban-gold shadow-sm max-w-full">
                 {slide.badgeIcon}
-                <span className="truncate max-w-[160px] sm:max-w-none">{slide.badge}</span>
+                <span className="truncate max-w-[150px] sm:max-w-none">{slide.badge}</span>
                 {slide.couponCode && (
                   <span className="ml-1 px-1.5 py-0.2 rounded bg-shubban-gold text-shubban-green-950 font-mono text-[8px] sm:text-[10px] font-bold">
                     কুপন: {slide.couponCode}
@@ -210,7 +225,7 @@ export default function HomePromoSlider({ initialSlides }: HomePromoSliderProps 
                 )}
               </div>
 
-              <h1 className="font-serif text-base sm:text-3xl lg:text-5xl font-bold text-white leading-snug sm:leading-tight line-clamp-2 sm:line-clamp-none">
+              <h1 className="font-serif text-sm sm:text-3xl lg:text-5xl font-bold text-white leading-snug sm:leading-tight line-clamp-2 sm:line-clamp-none">
                 {slide.headline}
               </h1>
 
@@ -218,10 +233,10 @@ export default function HomePromoSlider({ initialSlides }: HomePromoSliderProps 
                 {slide.subhead}
               </p>
 
-              <div className="pt-0.5 sm:pt-2 flex items-center gap-2 sm:gap-3">
+              <div className="pt-0.5 sm:pt-2 flex flex-wrap sm:flex-nowrap items-center gap-1.5 sm:gap-3">
                 <Link
                   href={slide.primaryCtaLink}
-                  className="px-3.5 sm:px-6 py-1.5 sm:py-3 rounded-lg sm:rounded-xl bg-shubban-gold hover:bg-shubban-gold-hover text-shubban-green-950 font-bold text-xs sm:text-sm shadow-md transition-transform hover:-translate-y-0.5 flex items-center gap-1 sm:gap-2"
+                  className="px-3 sm:px-6 py-1.5 sm:py-3 rounded-lg sm:rounded-xl bg-shubban-gold hover:bg-shubban-gold-hover text-shubban-green-950 font-bold text-[11px] sm:text-sm shadow-md transition-transform hover:-translate-y-0.5 flex items-center gap-1 sm:gap-2 whitespace-nowrap"
                 >
                   <span>{slide.primaryCtaText}</span>
                   <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -229,7 +244,7 @@ export default function HomePromoSlider({ initialSlides }: HomePromoSliderProps 
 
                 <Link
                   href={slide.secondaryCtaLink}
-                  className="px-2.5 sm:px-5 py-1.5 sm:py-3 rounded-lg sm:rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium text-xs sm:text-sm backdrop-blur-md border border-white/20 transition-all flex items-center gap-1 sm:gap-2"
+                  className="px-2.5 sm:px-5 py-1.5 sm:py-3 rounded-lg sm:rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium text-[11px] sm:text-sm backdrop-blur-md border border-white/20 transition-all flex items-center gap-1 sm:gap-2 whitespace-nowrap"
                 >
                   <span>{slide.secondaryCtaText}</span>
                 </Link>
@@ -260,11 +275,11 @@ export default function HomePromoSlider({ initialSlides }: HomePromoSliderProps 
           </div>
         </div>
 
-        {/* Carousel Arrow Controls */}
+        {/* Carousel Arrow Controls — Hidden on Mobile to prevent text obstruction, visible on tablet/desktop */}
         <button
           onClick={prevSlide}
           aria-label="Previous Slide"
-          className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md border border-white/15 transition-all z-20"
+          className="hidden sm:flex absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md border border-white/15 transition-all z-20 items-center justify-center shadow-lg"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -272,44 +287,45 @@ export default function HomePromoSlider({ initialSlides }: HomePromoSliderProps 
         <button
           onClick={nextSlide}
           aria-label="Next Slide"
-          className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md border border-white/15 transition-all z-20"
+          className="hidden sm:flex absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md border border-white/15 transition-all z-20 items-center justify-center shadow-lg"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
 
         {/* Slide Indicators / Dots */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
+        <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 sm:gap-2 z-20">
           {activeSlides.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentSlide(idx)}
               aria-label={`Go to slide ${idx + 1}`}
-              className={`h-2 transition-all rounded-full ${currentSlide === idx ? 'w-8 bg-shubban-gold' : 'w-2 bg-white/40 hover:bg-white/70'
-                }`}
+              className={`h-1.5 sm:h-2 transition-all rounded-full ${
+                currentSlide === idx ? 'w-6 sm:w-8 bg-shubban-gold' : 'w-1.5 sm:w-2 bg-white/40 hover:bg-white/70'
+              }`}
             />
           ))}
         </div>
       </div>
 
-      {/* Trust & Guarantee Banner Strip (Daraz & Rokomari Style) */}
-      <div className="bg-white dark:bg-shubban-darkCard border-b border-stone-200 dark:border-stone-800 py-3 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-medium text-stone-700 dark:text-stone-300">
-            <div className="flex items-center gap-2.5 justify-center sm:justify-start">
-              <Truck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
-              <span>দেশব্যাপী দ্রুত হোম ডেলিভারি</span>
+      {/* Trust & Guarantee Banner Strip — App Chip Track on Mobile, Grid on Desktop */}
+      <div className="bg-white/90 dark:bg-stone-900/90 backdrop-blur-md border-b border-stone-200/80 dark:border-stone-800 py-2 sm:py-3 shadow-2xs">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex sm:grid sm:grid-cols-4 items-center gap-2 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth py-0.5 -mx-1 px-1">
+            <div className="flex-shrink-0 flex items-center gap-1.5 sm:gap-2.5 px-2.5 py-1 sm:p-0 rounded-full sm:rounded-none bg-emerald-50/80 dark:bg-emerald-950/40 sm:bg-transparent border border-emerald-200/50 dark:border-emerald-800/40 sm:border-none text-[11px] sm:text-xs font-medium text-stone-700 dark:text-stone-300">
+              <Truck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+              <span className="whitespace-nowrap">দেশব্যাপী দ্রুত হোম ডেলিভারি</span>
             </div>
-            <div className="flex items-center gap-2.5 justify-center sm:justify-start">
-              <Gift className="w-4 h-4 text-rose-500 flex-shrink-0" />
-              <span>রকমারি গিফট র‍্যাপিং সুবিধা (+৳৩০)</span>
+            <div className="flex-shrink-0 flex items-center gap-1.5 sm:gap-2.5 px-2.5 py-1 sm:p-0 rounded-full sm:rounded-none bg-rose-50/80 dark:bg-rose-950/40 sm:bg-transparent border border-rose-200/50 dark:border-rose-800/40 sm:border-none text-[11px] sm:text-xs font-medium text-stone-700 dark:text-stone-300">
+              <Gift className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-rose-500 flex-shrink-0" />
+              <span className="whitespace-nowrap">রকমারি গিফট র‍্যাপিং (+৳৩০)</span>
             </div>
-            <div className="flex items-center gap-2.5 justify-center sm:justify-start">
-              <ShieldCheck className="w-4 h-4 text-shubban-gold flex-shrink-0" />
-              <span>১০০% আসল বই ও সুন্নাহ সামগ্রী</span>
+            <div className="flex-shrink-0 flex items-center gap-1.5 sm:gap-2.5 px-2.5 py-1 sm:p-0 rounded-full sm:rounded-none bg-amber-50/80 dark:bg-amber-950/40 sm:bg-transparent border border-amber-200/50 dark:border-amber-800/40 sm:border-none text-[11px] sm:text-xs font-medium text-stone-700 dark:text-stone-300">
+              <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-shubban-gold flex-shrink-0" />
+              <span className="whitespace-nowrap">১০০% আসল বই ও সুন্নাহ</span>
             </div>
-            <div className="flex items-center gap-2.5 justify-center sm:justify-start">
-              <HeartHandshake className="w-4 h-4 text-teal-600 dark:text-teal-400 flex-shrink-0" />
-              <span>আস-সুন্নাহ সদকাহ ফান্ড ট্রাস্ট</span>
+            <div className="flex-shrink-0 flex items-center gap-1.5 sm:gap-2.5 px-2.5 py-1 sm:p-0 rounded-full sm:rounded-none bg-teal-50/80 dark:bg-teal-950/40 sm:bg-transparent border border-teal-200/50 dark:border-teal-800/40 sm:border-none text-[11px] sm:text-xs font-medium text-stone-700 dark:text-stone-300">
+              <HeartHandshake className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-teal-600 dark:text-teal-400 flex-shrink-0" />
+              <span className="whitespace-nowrap">আস-সুন্নাহ সদকাহ ফান্ড</span>
             </div>
           </div>
         </div>
