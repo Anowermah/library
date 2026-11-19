@@ -691,9 +691,26 @@ export default async function HomePage() {
                     >
                       <div className="relative aspect-[16/10] w-full overflow-hidden bg-emerald-950/50">
                         <img
-                          src={camp.coverImage || '/images/hero-1.jpg'}
+                          src={
+                            camp.coverImage && !camp.coverImage.includes('1541888946425')
+                              ? camp.coverImage
+                              : camp.category === 'WATER_WELL'
+                                ? '/images/donations/water-well.jpg'
+                                : camp.category === 'QURAN_DISTRIBUTION'
+                                  ? '/images/donations/quran-distribution.jpg'
+                                  : '/images/donations/flood-relief.jpg'
+                          }
                           alt={camp.title}
                           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                          onError={(e) => {
+                            const target = e.currentTarget;
+                            target.onerror = null;
+                            target.src = camp.category === 'WATER_WELL'
+                              ? '/images/donations/water-well.jpg'
+                              : camp.category === 'QURAN_DISTRIBUTION'
+                                ? '/images/donations/quran-distribution.jpg'
+                                : '/images/donations/flood-relief.jpg';
+                          }}
                         />
                         <span className="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-sm text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded-md border border-amber-400/30">
                           {camp.category === 'RELIEF'

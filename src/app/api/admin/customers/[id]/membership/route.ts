@@ -63,10 +63,13 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
       });
     }
 
+    // Strip sensitive fields before returning
+    const { passwordHash: _removed, ...safeCustomer } = updatedCustomer;
+
     return NextResponse.json({
       success: true,
       message: `মেম্বারশিপ সফলভাবে '${newTier}' করা হয়েছে।`,
-      customer: updatedCustomer,
+      customer: safeCustomer,
     });
   } catch (error: any) {
     console.error('Customer membership PATCH error:', error);

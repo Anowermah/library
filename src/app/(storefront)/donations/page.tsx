@@ -131,9 +131,26 @@ export default async function DonationsPage({ searchParams }: DonationsPageProps
                 <div>
                   <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-100">
                     <img
-                      src={camp.coverImage}
+                      src={
+                        camp.coverImage && !camp.coverImage.includes('1541888946425')
+                          ? camp.coverImage
+                          : camp.category === 'WATER_WELL'
+                            ? '/images/donations/water-well.jpg'
+                            : camp.category === 'QURAN_DISTRIBUTION'
+                              ? '/images/donations/quran-distribution.jpg'
+                              : '/images/donations/flood-relief.jpg'
+                      }
                       alt={camp.title}
                       className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        target.onerror = null;
+                        target.src = camp.category === 'WATER_WELL'
+                          ? '/images/donations/water-well.jpg'
+                          : camp.category === 'QURAN_DISTRIBUTION'
+                            ? '/images/donations/quran-distribution.jpg'
+                            : '/images/donations/flood-relief.jpg';
+                      }}
                     />
                     <span className="absolute top-3 left-3 bg-shubban-green/90 backdrop-blur-sm text-shubban-gold text-[11px] font-bold px-3 py-1 rounded-full border border-shubban-gold/30">
                       {camp.category === 'RELIEF' && 'জরুরি ত্রাণ ও খাদ্য'}

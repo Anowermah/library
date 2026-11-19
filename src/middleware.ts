@@ -97,7 +97,60 @@ export function middleware(request: NextRequest) {
     'STAFF',
   ];
 
-  // 2. Protect Admin Routes (/admin/*)
+  // 2. Protect Admin API Routes (/api/admin/*)
+  if (pathname.startsWith('/api/admin')) {
+    if (!user) {
+      return NextResponse.json(
+        { error: 'Unauthorized: Admin authentication required' },
+        { status: 401 }
+      );
+    }
+    if (!adminStaffRoles.includes(user.role) && !user.isStaff) {
+      return NextResponse.json(
+        { error: 'Forbidden: Insufficient administrative privileges' },
+        { status: 403 }
+      );
+    }
+  }
+
+  // 3. Protect Seller API Routes (/api/seller/*)
+  if (pathname.startsWith('/api/seller')) {
+    // Exempt public seller application endpoint
+    if (pathname !== '/api/seller/apply') {
+      if (!user) {
+        return NextResponse.json(
+          { error: 'Unauthorized: Authentication required' },
+          { status: 401 }
+        );
+      }
+      const sellerRoles = ['PUBLISHER', 'SELLER', 'ADMIN', 'SUPER_ADMIN'];
+      if (!sellerRoles.includes(user.role) && !user.isVendor) {
+        return NextResponse.json(
+          { error: 'Forbidden: Seller privileges required' },
+          { status: 403 }
+        );
+      }
+    }
+  }
+
+  // 4. Protect Publisher API Routes (/api/publisher/*)
+  if (pathname.startsWith('/api/publisher')) {
+    if (!user) {
+      return NextResponse.json(
+        { error: 'Unauthorized: Authentication required' },
+        { status: 401 }
+      );
+    }
+    const publisherRoles = ['PUBLISHER', 'MAGAZINE_ADMIN', 'EDITOR', 'ADMIN', 'SUPER_ADMIN'];
+    if (!publisherRoles.includes(user.role) && !user.isPublisher) {
+      return NextResponse.json(
+        { error: 'Forbidden: Publisher privileges required' },
+        { status: 403 }
+      );
+    }
+  }
+
+  // 5. Protect Admin Page Routes (/admin/*)
   if (pathname.startsWith('/admin')) {
     // PWA Manifest, Service Worker & Offline fallback exemptions
     if (

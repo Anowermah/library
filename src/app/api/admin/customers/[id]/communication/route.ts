@@ -29,6 +29,22 @@ export async function POST(req: Request, { params }: { params: { id: string } })
       const resetToken = crypto.randomBytes(32).toString('hex');
       const resetLink = `/auth/reset-password?token=${resetToken}&email=${encodeURIComponent(customer.email)}`;
 
+      // Persist reset token in database with 24h validity
+      const cleanEmail = customer.email.toLowerCase().trim();
+      const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
+
+      await prisma.passwordResetToken.deleteMany({
+        where: { email: cleanEmail },
+      });
+
+      await prisma.passwordResetToken.create({
+        data: {
+          email: cleanEmail,
+          token: resetToken,
+          expiresAt,
+        },
+      });
+
       // Create in-app notification for the user
       await prisma.notification.create({
         data: {

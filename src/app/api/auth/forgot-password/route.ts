@@ -13,6 +13,7 @@ export async function POST(req: Request) {
     const cleanEmail = email.toLowerCase().trim();
     const user = await prisma.user.findUnique({
       where: { email: cleanEmail },
+      select: { id: true, email: true },
     });
 
     if (!user) {

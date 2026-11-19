@@ -72,9 +72,26 @@ export default async function CampaignDetailPage({ params }: CampaignDetailPageP
           {/* Featured Image */}
           <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden shadow-md">
             <img
-              src={campaign.coverImage}
+              src={
+                campaign.coverImage && !campaign.coverImage.includes('1541888946425')
+                  ? campaign.coverImage
+                  : campaign.category === 'WATER_WELL'
+                    ? '/images/donations/water-well.jpg'
+                    : campaign.category === 'QURAN_DISTRIBUTION'
+                      ? '/images/donations/quran-distribution.jpg'
+                      : '/images/donations/flood-relief.jpg'
+              }
               alt={campaign.title}
               className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.currentTarget;
+                target.onerror = null;
+                target.src = campaign.category === 'WATER_WELL'
+                  ? '/images/donations/water-well.jpg'
+                  : campaign.category === 'QURAN_DISTRIBUTION'
+                    ? '/images/donations/quran-distribution.jpg'
+                    : '/images/donations/flood-relief.jpg';
+              }}
             />
           </div>
 

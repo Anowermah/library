@@ -1,0 +1,1106 @@
+[
+  {
+    "file": "src/app/(storefront)/articles/[slug]/page.tsx",
+    "line": 125,
+    "category": "security_xss_leak",
+    "severity": "high",
+    "issue": "dangerouslySetInnerHTML used without visible sanitization filter",
+    "snippet": "dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}"
+  },
+  {
+    "file": "src/app/(storefront)/books/[slug]/page.tsx",
+    "line": 174,
+    "category": "security_xss_leak",
+    "severity": "high",
+    "issue": "dangerouslySetInnerHTML used without visible sanitization filter",
+    "snippet": "dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}"
+  },
+  {
+    "file": "src/app/api/admin/ads/advertisers/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ads/advertisers/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ads/billing/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ads/billing/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ads/campaigns/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ads/campaigns/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ads/creatives/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ads/creatives/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ads/placements/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ads/placements/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ads/stats/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ads/stats/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ai/command/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ai/command/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ai/conversations/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ai/conversations/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ai/stats/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ai/stats/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ai/tasks/[id]/approve/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ai/tasks/[id]/approve/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ai/tasks/[id]/reject/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ai/tasks/[id]/reject/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ai/tasks/[id]/rollback/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ai/tasks/[id]/rollback/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ai-studio/agents/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ai-studio/agents/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ai-studio/automations/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ai-studio/automations/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ai-studio/chat/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ai-studio/chat/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ai-studio/conversations/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ai-studio/conversations/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ai-studio/knowledge/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ai-studio/knowledge/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ai-studio/providers/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ai-studio/providers/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/ai-studio/stats/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/ai-studio/stats/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/appearance/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/appearance/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/articles/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/articles/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/articles/[id]/approve/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/articles/[id]/approve/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/articles/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/articles/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/attributes/bulk/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/attributes/bulk/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/attributes/groups/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/attributes/groups/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/attributes/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/attributes/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/attributes/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/attributes/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/attributes/[id]/values/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/attributes/[id]/values/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/audit-logs/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/audit-logs/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/authors/batch/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/authors/batch/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/authors/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/authors/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/authors/[id]/articles/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/authors/[id]/articles/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/authors/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/authors/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/books/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/books/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/categories/batch/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/categories/batch/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/categories/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/categories/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/categories/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/categories/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/commission/adjust/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/commission/adjust/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/commission/rules/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/commission/rules/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/coupons/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/coupons/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/coupons/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/coupons/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/couriers/providers/test/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/couriers/providers/test/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/couriers/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/couriers/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/couriers/settlements/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/couriers/settlements/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/couriers/shipments/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/couriers/shipments/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/customers/bulk/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/customers/bulk/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/customers/import/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/customers/import/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/customers/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/customers/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/customers/tags/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/customers/tags/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/customers/[id]/communication/route.ts",
+    "line": 19,
+    "category": "security_data_leak",
+    "severity": "high",
+    "issue": "User fetched without select/omit projection; may leak passwordHash to client",
+    "snippet": "const customer = await prisma.user.findUnique({"
+  },
+  {
+    "file": "src/app/api/admin/customers/[id]/communication/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/customers/[id]/communication/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/customers/[id]/membership/route.ts",
+    "line": 23,
+    "category": "security_data_leak",
+    "severity": "high",
+    "issue": "User fetched without select/omit projection; may leak passwordHash to client",
+    "snippet": "const customer = await prisma.user.findUnique({"
+  },
+  {
+    "file": "src/app/api/admin/customers/[id]/membership/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/customers/[id]/membership/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/customers/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/customers/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/customers/[id]/status/route.ts",
+    "line": 23,
+    "category": "security_data_leak",
+    "severity": "high",
+    "issue": "User fetched without select/omit projection; may leak passwordHash to client",
+    "snippet": "const customer = await prisma.user.findUnique({"
+  },
+  {
+    "file": "src/app/api/admin/customers/[id]/status/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/customers/[id]/status/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/donations/campaigns/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/donations/campaigns/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/donations/campaigns/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/donations/campaigns/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/donations/disburse/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/donations/disburse/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/donations/reconcile/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/donations/reconcile/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/donations/refund/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/donations/refund/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/homepage/banners/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/homepage/banners/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/homepage/banners/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/homepage/banners/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/homepage/sections/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/homepage/sections/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/homepage/sections/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/homepage/sections/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/inventory/adjust/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/inventory/adjust/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/inventory/low-stock/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/inventory/low-stock/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/islamic-ai/hotline/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/islamic-ai/hotline/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/islamic-ai/hotline/scholars/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/islamic-ai/hotline/scholars/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/islamic-ai/settings/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/islamic-ai/settings/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/islamic-ai/stats/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/islamic-ai/stats/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/notifications/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/notifications/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/orders/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/orders/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/payments/reconciliation/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/payments/reconciliation/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/payouts/reconcile/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/payouts/reconcile/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/payouts/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/payouts/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/payouts/[id]/approve/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/payouts/[id]/approve/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/payouts/[id]/process/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/payouts/[id]/process/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/payouts/[id]/reject/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/payouts/[id]/reject/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/payouts/[id]/reverse/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/payouts/[id]/reverse/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/products/batch/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/products/batch/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/products/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/products/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/products/search/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/products/search/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/products/[id]/attributes/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/products/[id]/attributes/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/products/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/products/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/products/[id]/variants/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/products/[id]/variants/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/promotions/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/promotions/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/publications/analytics/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/publications/analytics/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/publications/issues/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/publications/issues/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/publishers/batch/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/publishers/batch/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/publishers/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/publishers/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/publishers/[id]/publications/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/publishers/[id]/publications/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/publishers/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/publishers/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/push/send/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/push/send/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/push/stats/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/push/stats/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/refunds/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/refunds/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/returns/disputes/[id]/resolve/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/returns/disputes/[id]/resolve/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/returns/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/returns/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/returns/[id]/approve/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/returns/[id]/approve/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/returns/[id]/inspect/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/returns/[id]/inspect/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/returns/[id]/refund/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/returns/[id]/refund/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/returns/[id]/reject/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/returns/[id]/reject/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/reviews/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/reviews/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/reviews/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/reviews/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/sellers/applications/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/sellers/applications/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/sellers/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/sellers/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/settings/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/settings/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/shipping/cod-report/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/shipping/cod-report/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/shipping/shipments/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/shipping/shipments/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/shipping/shipments/[id]/remittance/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/shipping/shipments/[id]/remittance/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/shipping/shipments/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/shipping/shipments/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/shipping/zones/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/shipping/zones/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/staff/approvals/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/staff/approvals/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/staff/approvals/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/staff/approvals/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/staff/attendance/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/staff/attendance/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/staff/departments/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/staff/departments/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/staff/departments/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/staff/departments/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/staff/designations/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/staff/designations/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/staff/designations/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/staff/designations/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/staff/leave/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/staff/leave/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/staff/leave/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/staff/leave/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/staff/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/staff/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/staff/stats/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/staff/stats/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/staff/tasks/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/staff/tasks/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/staff/tasks/[id]/comments/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/staff/tasks/[id]/comments/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/staff/tasks/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/staff/tasks/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/submissions/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/submissions/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/support/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/support/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/support/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/support/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/users/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/users/route.ts"
+  },
+  {
+    "file": "src/app/api/admin/users/[id]/route.ts",
+    "line": 59,
+    "category": "security_data_leak",
+    "severity": "critical",
+    "issue": "API directly returns user object in response; verify passwordHash is stripped",
+    "snippet": "return NextResponse.json({ user });"
+  },
+  {
+    "file": "src/app/api/admin/variants/[id]/route.ts",
+    "line": 1,
+    "category": "security_rbac_leak",
+    "severity": "critical",
+    "issue": "Admin API route appears to lack authentication or admin role check",
+    "snippet": "src/app/api/admin/variants/[id]/route.ts"
+  },
+  {
+    "file": "src/app/api/auth/forgot-password/route.ts",
+    "line": 14,
+    "category": "security_data_leak",
+    "severity": "high",
+    "issue": "User fetched without select/omit projection; may leak passwordHash to client",
+    "snippet": "const user = await prisma.user.findUnique({"
+  },
+  {
+    "file": "src/app/api/auth/me/route.ts",
+    "line": 34,
+    "category": "security_data_leak",
+    "severity": "critical",
+    "issue": "API directly returns user object in response; verify passwordHash is stripped",
+    "snippet": "return NextResponse.json({ user: null }, { status: 500 });"
+  },
+  {
+    "file": "src/app/layout.tsx",
+    "line": 50,
+    "category": "security_xss_leak",
+    "severity": "high",
+    "issue": "dangerouslySetInnerHTML used without visible sanitization filter",
+    "snippet": "dangerouslySetInnerHTML={{"
+  },
+  {
+    "file": "src/components/pwa/AdminPwaManager.tsx",
+    "line": 145,
+    "category": "security_xss_leak",
+    "severity": "high",
+    "issue": "dangerouslySetInnerHTML used without visible sanitization filter",
+    "snippet": "dangerouslySetInnerHTML={{"
+  }
+]

@@ -76,10 +76,13 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
       });
     }
 
+    // Strip sensitive fields before returning
+    const { passwordHash: _removed, ...safeCustomer } = updatedCustomer;
+
     return NextResponse.json({
       success: true,
       message: `গ্রাহকের স্ট্যাটাস সফলভাবে '${status}' করা হয়েছে।`,
-      customer: updatedCustomer,
+      customer: safeCustomer,
     });
   } catch (error: any) {
     console.error('Customer status PATCH error:', error);
